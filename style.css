@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'FiraCode';
+    /* set name */
+    src: url(fonts/Fira_Code/FiraCode-VariableFont_wght.ttf);
+    /* url of the font */
+}
+
 :root {
     --primary-background: #1C1C1C;
     --secondary-background: #08463B;
@@ -14,13 +21,16 @@
 }
 
 body {
+    font-family: 'FiraCode', 'Courier New', monospace;
     background-color: var(--primary-background);
     color: var(--primary-text);
 }
 
-nav {
+.container_content_limit {
+    max-width: 1440px;
+    margin: 0 auto;
     display: flex;
-    padding: 8px;
+    padding: 8px 96px;
 }
 
 /* #region language switch */
@@ -92,6 +102,7 @@ nav {
 /* #endregion */
 
 #menu_elements {
+    padding: 0 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -102,4 +113,8 @@ nav {
     list-style: none;
     display: flex;
     gap: 10px;
+}
+
+#menu_list li {
+    font-size: 20px;
 }
