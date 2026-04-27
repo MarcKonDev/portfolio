@@ -8,6 +8,7 @@
 :root {
     --primary-background: #1C1C1C;
     --secondary-background: #08463B;
+    --gradient-background: rgba(8, 70, 59, 0.51);
     --primary-text: #fff;
     --primary-accent: #D9D9D9;
     --secondary-text: #3DCFB6;
@@ -26,20 +27,39 @@ body {
     color: var(--primary-text);
 }
 
-.container_content_limit {
+a{
+    text-decoration: none;
+    color: var(--primary-text);
+}
+
+#hero_wrapper{
+    height: 100vh;
+    background: linear-gradient(to bottom, var(--primary-background) 0%, transparent 10%),
+    linear-gradient(to left bottom, var(--secondary-background) 0%, var(--primary-background) 50%);
+}
+
+/* #region header */
+
+#container_header{
+    display: flex;
     max-width: 1440px;
     margin: 0 auto;
-    display: flex;
-    padding: 8px 96px;
+    height: 96px;
+    align-items: center;
 }
 
 /* #region language switch */
+#switch_container{
+    display: flex;
+    align-items: center;
+}
+
 .switch {
     /* label tag als optischer Kontainer, welcher die eigenschaften des ausgeblendeten inputs erbt*/
     position: relative;
     display: inline-block;
-    width: 120px;
-    height: 45px;
+    width: 84px;
+    height: 28px;
 }
 
 .switch input {
@@ -68,10 +88,10 @@ body {
     /* child wird zum slider span hinzugefügt, sodass die grünen bereiche entstehen */
     content: "";
     position: absolute;
-    height: 37px;
-    width: 56px;
-    left: 4px;
-    bottom: 3px;
+    height: 28px;
+    width: 44px;
+    left: -1px;
+    bottom: -1px;
     background-color: var(--secondary-text);
     border-radius: 40px;
     transition: 0.4s;
@@ -80,7 +100,7 @@ body {
 
 #lang-toggle:checked+.slider::before {
     /* inputfeld angeklickt, dann slider::before element verschieben */
-    transform: translateX(56px);
+    transform: translateX(40px);
 }
 
 .switch_text {
@@ -112,9 +132,19 @@ body {
 #menu_list {
     list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 24px;
 }
 
 #menu_list li {
     font-size: 20px;
 }
+
+/* #endregion */
+
+/* #region main */ 
+
+/* main{
+    
+} */
+
+/* #endregion */
