@@ -24,9 +24,9 @@
                 <div id="menu_elements">
                     <div>
                         <ul id="menu_list">
-                            <li><a href="#">About me</a></li>
-                            <li><a href="">Skills</a></li>
-                            <li><a href="">Projects</a></li>
+                            <li><a href="#" data-key="nav_about">About me</a></li>
+                            <li><a href="#" data-key="nav_skills">Skills</a></li>
+                            <li><a href="#" data-key="nav_projects">Projects</a></li>
                         </ul>
                     </div>
                     <div>
@@ -36,19 +36,19 @@
             </nav>
         </header>
         <section id="hero" class="container">
-            <h2>Frontend Developer</h2>
+            <h2 data-key="hero_subtitle">Frontend Developer</h2>
             <h1>Marc Dev</h1>
             <div class="hero_btns">
                 <button id="check_work_btn" class="marquee-btn">
                     <div class="marquee-inner">
-                        <span>Check my work</span>
-                        <span>Check my work</span>
+                        <span data-key="btn_work">Check my work</span>
+                        <span data-key="btn_work">Check my work</span>
                     </div>
                 </button>
                 <button id="contact_btn" class="marquee-btn">
                     <div class="marquee-inner">
-                        <span>Contact me</span>
-                        <span>Contact me</span>
+                        <span data-key="btn_contact">Contact me</span>
+                        <span data-key="btn_contact">Contact me</span>
                     </div>
                 </button>
             </div>
@@ -56,8 +56,8 @@
          <!-- Textbanner -->
             <div class="ticker-wrapper">
                 <div class="ticker-content">
-                    <span>Frontend Developer • Based in Munich • Open to work • Available for remote work •
-                    </span><span>Frontend Developer • Based in Munich • Open to work • Available for remote work •
+                    <span data-key="ticker_text">Frontend Developer • Based in Munich • Open to work • Available for remote work •
+                    </span><span data-key="ticker_text">Frontend Developer • Based in Munich • Open to work • Available for remote work •
                     </span>
                 </div>
             </div>
@@ -76,6 +76,7 @@
 
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
