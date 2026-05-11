@@ -1,8 +1,11 @@
 @font-face {
     font-family: 'FiraCode';
-    /* set name */
     src: url(fonts/Fira_Code/FiraCode-VariableFont_wght.ttf);
-    /* url of the font */
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url(./fonts/Karla/Karla-VariableFont_wght.ttf);
 }
 
 :root {
@@ -33,17 +36,25 @@ a{
 }
 
 #hero_wrapper{
-    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    height: 100dvh;
     background: linear-gradient(to bottom, var(--primary-background) 0%, transparent 10%),
     linear-gradient(to left bottom, var(--secondary-background) 0%, var(--primary-background) 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.container{
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 /* #region header */
 
 #container_header{
-    display: flex;
-    max-width: 1440px;
-    margin: 0 auto;
     height: 96px;
     align-items: center;
 }
@@ -55,7 +66,6 @@ a{
 }
 
 .switch {
-    /* label tag als optischer Kontainer, welcher die eigenschaften des ausgeblendeten inputs erbt*/
     position: relative;
     display: inline-block;
     width: 84px;
@@ -63,12 +73,10 @@ a{
 }
 
 .switch input {
-    /* input der ausgeschalten wird, true or false aber an das label vererbt */
     display: none;
 }
 
 .slider {
-    /* span tag um die span tags mit en und de um das design herzustellen*/
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -85,7 +93,6 @@ a{
 }
 
 .slider::before {
-    /* child wird zum slider span hinzugefügt, sodass die grünen bereiche entstehen */
     content: "";
     position: absolute;
     height: 28px;
@@ -99,12 +106,10 @@ a{
 }
 
 #lang-toggle:checked+.slider::before {
-    /* inputfeld angeklickt, dann slider::before element verschieben */
     transform: translateX(40px);
 }
 
 .switch_text {
-    /* holt die schrift nach vorne und macht den Überganzg / Bewegung langsam */
     z-index: 2;
     transition: 0.4s;
 }
@@ -116,9 +121,6 @@ a{
 #lang-toggle:not(:checked)+.slider .text-de {
     color: var(--secondary-text-50percent);
 }
-
-/* DE is white when checked */
-
 /* #endregion */
 
 #menu_elements {
@@ -141,10 +143,113 @@ a{
 
 /* #endregion */
 
+#hero {
+    display: flex;   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
 /* #region main */ 
 
-/* main{
-    
-} */
+h2{
+    font-size: 40px;
+    font-weight: 200;
+    text-align: center;
+}
+
+h1{
+    font-size: 128px;
+    text-align: center;
+}
+
+.hero_btns{
+    display: flex;
+    gap: 48px;
+}
+
+/* #endregion */
+
+/* #region button loop*/
+
+.marquee-btn {
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+    border: 1px solid var(--primary-text);
+    border-radius: 40px;
+    color: var(--primary-text);
+    cursor: pointer;
+}
+
+#check_work_btn{
+    width: 172px;
+    height: 48px;
+}
+
+#contact_btn{
+    width: 143px;
+    height: 48px;
+}
+
+.marquee-inner {
+    display: flex;
+    width: 200%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transition: transform 2s ease-out;
+    transform: translate(0, -50%);
+}
+
+.marquee-inner span {
+    width: 50%;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.marquee-btn:hover .marquee-inner {
+    animation: marqueeLoop 3s linear infinite;
+    transition: transform 0s; 
+}
+
+@keyframes marqueeLoop {
+    0% { transform: translate(0, -50%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+/* #endregion */
+
+/* #region Textbanner */
+
+.ticker-wrapper {
+    position: absolute;
+    bottom: 50px;
+    left: -5%;
+    width: 110%;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 12px 0;
+    transform: rotate(-3deg);
+    white-space: nowrap;
+}
+
+.ticker-content{
+    display: flex;
+    width: max-content;
+    animation: marquee 10s linear infinite;
+}
+
+.ticker-content span{
+    font-size: 32px;
+    color: var(--secondary-text);
+    padding: 0 8px;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Moves halfway so the second span takes over */
+}
 
 /* #endregion */
