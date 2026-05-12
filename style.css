@@ -225,11 +225,14 @@ h1{
 
 .ticker-wrapper {
     position: absolute;
+    z-index: 10;
     bottom: 50px;
     left: -5%;
     width: 110%;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 12px 0;
     transform: rotate(-3deg);
     white-space: nowrap;
@@ -253,3 +256,52 @@ h1{
 }
 
 /* #endregion */
+
+/* #region left scroll indicator*/
+
+#indicator_container{
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: calc(50% - 720px + 96px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+#scroll_indicator{
+    border: 1px solid var(--secondary-text);
+    border-radius: 20px;
+    height: 48px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scroll_arrow{
+    font-size: 14px;
+    animation: arrowAnimation 2s ease-in-out infinite;
+}
+
+#indicator_line{
+    background-color: var(--secondary-text);
+    width: 1px;
+    height: 240px;
+}
+
+@keyframes arrowAnimation {
+    0% {transform: translateY(-6px);}
+    50% {transform: translateY(6px);}
+    100% {transform: translateY(-6px);}
+}
+
+/* #endregion */
+
+
+@media (max-width: 1440px) {
+    #indicator_container {
+        left: 96px; /* Falls back to 96px from the screen edge on smaller screens */
+    }
+}
