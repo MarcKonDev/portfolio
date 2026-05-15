@@ -157,7 +157,7 @@ a{
 
 main{
     display: flex;
-    height: 100%;
+    flex-grow: 1;
 }
 
 h2{
@@ -337,6 +337,66 @@ h1{
 #social_email p {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
+}
+
+/* #endregion */
+
+/* #region about section*/
+
+#container_content_limit{
+    max-width: calc(var(--max-width) - (var(--content-offset) * 2));
+    margin: 0 auto;
+}
+
+#about_me{
+    margin: 80px 0;
+}
+
+#about_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+#portrait img{
+    width: 568px;
+    height: 568px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+#who_i_am{
+    width: 568px;
+}
+
+#who_i_am h4{
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+    font-family: 'Karla', 'Courier New', monospace;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#about_me_text{
+    border: 1px solid var(--secondary-text);
+    border-radius: 30px;
+    padding: 32px;
+}
+
+#about_me_text h2{
+    color: var(--secondary-text);
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+#details_container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.detail_items{
+    display: flex;
 }
 
 /* #endregion */
