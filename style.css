@@ -367,6 +367,7 @@ h1{
 
 #who_i_am{
     width: 568px;
+    margin-top: 98px;
 }
 
 #who_i_am h4{
@@ -381,6 +382,7 @@ h1{
     border: 1px solid var(--secondary-text);
     border-radius: 30px;
     padding: 32px;
+    background-color: color-mix(in srgb, var(--secondary-text) 10%, transparent);
 }
 
 #about_me_text h2{
@@ -397,6 +399,20 @@ h1{
 
 .detail_items{
     display: flex;
+    align-items: flex-start; 
+    gap: 24px;
+}
+
+.detail_icon {
+    flex-shrink: 0; 
+    width: 40px;    
+    display: flex;
+    justify-content: center; 
+}
+
+.detail_icon svg {
+    height: auto;
+    max-width: 32px; 
 }
 
 /* #endregion */
