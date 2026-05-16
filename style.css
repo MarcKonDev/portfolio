@@ -389,6 +389,7 @@ h1{
     color: var(--secondary-text);
     text-align: left;
     margin-bottom: 32px;
+    font-weight: 700;
 }
 
 #details_container{
@@ -414,6 +415,81 @@ h1{
     height: auto;
     max-width: 32px; 
 }
+
+/* #endregion */
+
+/* #region skills */
+
+#skills_grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#skillset_wrapper{
+    width: 520px;
+}
+
+#skillset_wrapper h4{
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+    font-family: 'Karla', 'Courier New', monospace;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#skillset{
+    border: 1px solid var(--secondary-text);
+    border-radius: 30px;
+    padding: 40px;
+    background-color: color-mix(in srgb, var(--secondary-text) 10%, transparent);
+}
+
+#skillset h2{
+    color: var(--secondary-text);
+    text-align: left;
+    margin-bottom: 32px;
+    font-weight: 700;
+}
+
+#skillset_text{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+#skillset_text h3 span{
+    color: var(--secondary-text);
+}
+
+#skillset_btn{
+    background-color: transparent;
+    color: var(--primary-text);
+    border: 1px solid var(--primary-text);
+    border-radius: 100px;
+    padding: 10px 24px;
+}
+
+#svg_grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 48px;
+}
+
+.svg_divs{
+    width: 104px;
+    height: 116px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.svg_divs p{
+    text-align: center;
+}
+
+
 
 /* #endregion */
 
