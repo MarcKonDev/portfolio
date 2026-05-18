@@ -528,14 +528,94 @@ h1{
 }
 
 .svg_divs svg{
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .svg_divs svg:hover{
     transform: scale(1.1);
 }
 
+/* #endregion */
 
+/* #region portfolio */
+
+#portfolio{
+    margin-top: 40px;
+}
+
+#portfolio_grid{
+    display: grid;
+    grid-template-columns: 800px 1fr;
+}
+
+#present_projects h2{
+    color: var(--secondary-text);
+    text-align: left;
+    margin-bottom: 32px;
+    font-weight: 700;
+    font-size: 64px;
+}
+
+#present_projects h4{
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+    font-family: 'Karla', 'Courier New', monospace;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#present_projects p {
+    font-size: 18px; 
+    width: 600px;
+    margin-bottom: 40px;
+}
+
+.prev_projects{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 109px;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--secondary-text);
+}
+
+.prev_projects:first-of-type {
+    border-top: 1px solid var(--secondary-text);
+}
+
+.used_langs{
+    display: flex;
+    gap: 8px;
+}
+
+.used_langs span + span::before{
+    content: "| ";
+    color: var(--secondary-text);
+}
+
+.prev_projects:hover{
+    background-color: color-mix(in srgb, var(--secondary-text) 10%, transparent);
+}
+
+.prev_projects h3::after {
+    content: "\2197";
+    margin-left: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.prev_projects:hover h3::after{
+    opacity: 1;
+    transform: translateX(0);
+}
+/* #endregion */
+
+/* #region references */
+
+#references{
+    margin-top: 40px;
+}
 
 /* #endregion */
 
