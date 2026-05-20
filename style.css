@@ -635,12 +635,28 @@ h1 {
 
 #references {
     margin-top: 80px;
+    overflow: hidden;
+    width: 100%;
 }
 
 .testimonial_container{
     display: flex;
     gap: 64px;
-    overflow: hidden;
+    position: relative;
+    width: 100%;
+    align-items: center;
+}
+
+.testimonials.active {
+    border-color: #3DCFB6; 
+    background-color: rgba(8, 70, 59, 0.3); 
+    opacity: 1;
+}
+
+.testimonials:not(.active) {
+    opacity: 0.35; 
+    transform: scale(0.95); 
+    transition: transform 0.4s, opacity 0.4s;
 }
 
 #references h3 {
@@ -681,6 +697,63 @@ h1 {
     height: 1px;
     flex: 1;
     background-color: var(--secondary-text);
+}
+
+#controll_container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control_btns{
+    border: none;
+    background-color: transparent;
+    color: var(--primary-text);
+}
+.prev_btn{
+    margin-right: 20px;
+}
+
+.next_btn{
+    margin-left: 20px;
+}
+
+.control_btns svg{
+    width: 24px;
+    height: 24px;
+}
+
+#dots_container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 20px;
+    background-color: var(--primary-text);
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.dot.active {
+    background-color: var(--secondary-text); 
+    opacity: 1;
+}
+
+.control_btns {
+    cursor: pointer;
+}
+
+
+/* #endregion */
+
+/* #region contact */
+
+#contact_me{
+    margin-top: 40px;
 }
 
 /* #endregion */
