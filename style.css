@@ -644,20 +644,22 @@ h1 {
     gap: 64px;
     position: relative;
     width: 100%;
+    justify-content: center;
     align-items: center;
 }
 
-.testimonials.active {
+.testimonials:nth-child(2) {
     border-color: #3DCFB6; 
     background-color: rgba(8, 70, 59, 0.3); 
     opacity: 1;
+    transform: scale(1); 
 }
 
-.testimonials:not(.active) {
+.testimonials:not(:nth-child(2)) {
     opacity: 0.35; 
     transform: scale(0.95); 
-    transition: transform 0.4s, opacity 0.4s;
 }
+
 
 #references h3 {
     color: var(--secondary-text);
