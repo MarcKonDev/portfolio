@@ -362,7 +362,7 @@ h1 {
 
 /* #region about section*/
 
-#container_content_limit {
+.container_content_limit {
     max-width: calc(var(--max-width) - (var(--content-offset) * 2));
     margin: 0 auto;
 }
@@ -639,7 +639,7 @@ h1 {
     width: 100%;
 }
 
-.testimonial_container{
+.testimonial_container {
     display: flex;
     gap: 64px;
     position: relative;
@@ -649,15 +649,15 @@ h1 {
 }
 
 .testimonials:nth-child(2) {
-    border-color: #3DCFB6; 
-    background-color: rgba(8, 70, 59, 0.3); 
+    border-color: #3DCFB6;
+    background-color: rgba(8, 70, 59, 0.3);
     opacity: 1;
-    transform: scale(1); 
+    transform: scale(1);
 }
 
 .testimonials:not(:nth-child(2)) {
-    opacity: 0.35; 
-    transform: scale(0.95); 
+    opacity: 0.35;
+    transform: scale(0.95);
 }
 
 
@@ -669,7 +669,7 @@ h1 {
     font-size: 32px;
 }
 
-.testimonials{
+.testimonials {
     border: 1px solid var(--secondary-text);
     border-radius: 32px;
     flex: 0 0 632px;
@@ -681,58 +681,59 @@ h1 {
     background-color: color-mix(in srgb, var(--secondary-text) 10%, transparent);
 }
 
-.testimonials p{
+.testimonials p {
     font-size: 20px;
 }
 
-.testimonial_author{
+.testimonial_author {
     display: flex;
     gap: 16px;
     align-items: center;
 }
 
-.testimonial_author span{
+.testimonial_author span {
     font-size: 18px;
 }
 
-.horizontal_line{
+.horizontal_line {
     height: 1px;
     flex: 1;
     background-color: var(--secondary-text);
 }
 
-#controll_container{
+#controll_container {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.control_btns{
+.control_btns {
     border: none;
     background-color: transparent;
     color: var(--primary-text);
 }
-.prev_btn{
+
+.prev_btn {
     margin-right: 20px;
 }
 
-.next_btn{
+.next_btn {
     margin-left: 20px;
 }
 
-.control_btns svg{
+.control_btns svg {
     width: 24px;
     height: 24px;
 }
 
-#dots_container{
+#dots_container {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.dot{
+.dot {
     width: 8px;
     height: 8px;
     border-radius: 20px;
@@ -741,7 +742,7 @@ h1 {
 }
 
 .dot.active {
-    background-color: var(--secondary-text); 
+    background-color: var(--secondary-text);
     opacity: 1;
 }
 
@@ -754,11 +755,101 @@ h1 {
 
 /* #region contact */
 
-#contact_me{
+#contact_me {
     margin-top: 40px;
 }
 
-/* #endregion */
+.contact_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.work_together {
+    display: flex;
+    flex-direction: column;
+}
+
+.work_together h4 {
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+    font-family: 'Karla', 'Courier New', monospace;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.work_together h2 {
+    color: var(--secondary-text);
+    text-align: left;
+    margin-bottom: 32px;
+    font-weight: 700;
+    font-size: 64px;
+}
+
+.work_together span {
+    color: var(--secondary-text);
+}
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 20px;
+    border-bottom: 1px solid var(--secondary-text);
+}
+
+#contact_form:first-child {
+    border-top: 1px solid var(--secondary-text);
+}
+
+#privacy_btn {
+    margin: 40px 0;
+}
+
+#contact_form {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start;
+    width: 100%; */
+}
+
+/* .form_container, #privacy_btn {
+    width: 100%;
+} */
+
+#form_btn {
+    align-self: center;
+    margin-top: 24px;
+    background-color: transparent;
+    border: 1px solid var(--primary-text);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: var(--primary-text);
+}
+
+#contact_form input {
+    background-color: transparent;
+    border: none;
+}
+
+/* #endregion footer */
+
+/* #region */
+#footer_container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#footer_list{
+    list-style: none;
+    line-height: 1.5;
+}
+
+#footer_text_area{
+    color: var(--secondary-text);
+}
+/**/
 
 
 @media (max-width: 1440px) {
