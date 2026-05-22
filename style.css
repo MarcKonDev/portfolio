@@ -54,6 +54,45 @@ a {
     margin: 0 auto;
 }
 
+/* #region svg logo*/
+
+.logo-svg {
+    cursor: pointer;
+}
+
+
+.logo-svg .logo-text,
+.logo-svg .logo-icon {
+    transition:
+        fill 0.25s ease,
+        stroke 0.25s ease;
+
+    stroke: transparent;
+}
+
+.logo-svg .logo-text {
+    fill: #FFFFFF;
+    stroke-width: 1px;
+}
+
+.logo-svg .logo-icon {
+    fill: #3DCFB6;
+    stroke-width: 1.5px;
+}
+
+.logo-svg:hover .logo-text {
+    fill: transparent;
+    stroke: #FFFFFF;
+}
+
+.logo-svg:hover .logo-icon {
+    fill: transparent;
+    stroke: #3DCFB6;
+}
+/* #endregion*/
+
+
+
 /* #region header */
 
 #container_header {
@@ -835,7 +874,7 @@ h1 {
 
 /* #region */
 #footer_container {
-    margin-top: 80px;
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
