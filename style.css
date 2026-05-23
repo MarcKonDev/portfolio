@@ -89,6 +89,7 @@ a {
     fill: transparent;
     stroke: #3DCFB6;
 }
+
 /* #endregion*/
 
 
@@ -840,29 +841,72 @@ h1 {
     border-top: 1px solid var(--secondary-text);
 }
 
+
 #privacy_btn {
     margin: 40px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+#privacy {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+#privacy_btn label {
+    position: relative;
+    padding-left: 32px; 
+    cursor: pointer;
+    color: var(--primary-text);
+    font-size: 18px;
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'Karla', 'Courier New', monospace;
+}
+
+#privacy_btn label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--secondary-text); 
+    border-radius: 4px; 
+    background-color: transparent;
+}
+
+
+#privacy:checked + label::after {
+    content: "✓";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    color: var(--secondary-text); 
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #contact_form {
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start;
-    width: 100%; */
 }
 
-/* .form_container, #privacy_btn {
-    width: 100%;
-} */
-
 #form_btn {
+    font-family: 'Karla', 'Courier New', monospace;
     align-self: center;
     margin-top: 24px;
     background-color: transparent;
     border: 1px solid var(--primary-text);
-    padding: 10px 20px;
+    padding: 14px 24px;
     border-radius: 30px;
     color: var(--primary-text);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 #contact_form input {
@@ -870,25 +914,33 @@ h1 {
     border: none;
 }
 
-/* #endregion footer */
+/* #endregion */
 
-/* #region */
+/* #region footer*/
 #footer_container {
-    margin-top: 40px;
+    margin: 60px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#footer_list{
+#footer_list {
     list-style: none;
     line-height: 1.5;
 }
 
-#footer_text_area{
+#footer_text_area {
     color: var(--secondary-text);
 }
-/**/
+
+#footer_img_area{
+    max-width: 135px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* #endregion */
 
 
 @media (max-width: 1440px) {
