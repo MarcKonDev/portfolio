@@ -21,6 +21,19 @@ const translations = {
     }
 };
 
+const toPortfolioBtn = document.querySelector('#check_work_btn');
+const toContactBtn = document.querySelector('#contact_btn');
+
+toPortfolioBtn.addEventListener('click', ()=>{
+    const target = document.querySelector('#portfolio');
+    target.scrollIntoView({behavior: "smooth"});
+});
+
+toContactBtn.addEventListener('click', () => {
+    const target = document.querySelector('#contact_me');
+    target.scrollIntoView({behavior: "smooth"});
+});
+
 langToggle.addEventListener('change', () => {
     const language = langToggle.checked ? 'de' : 'en';
     
@@ -71,3 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateDots();
 });
+
