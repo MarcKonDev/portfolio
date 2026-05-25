@@ -23,6 +23,7 @@ const translations = {
 
 const toPortfolioBtn = document.querySelector('#check_work_btn');
 const toContactBtn = document.querySelector('#contact_btn');
+const skillsetBtn = document.querySelector('#skillset_btn')
 
 toPortfolioBtn.addEventListener('click', ()=>{
     const target = document.querySelector('#portfolio');
@@ -30,6 +31,11 @@ toPortfolioBtn.addEventListener('click', ()=>{
 });
 
 toContactBtn.addEventListener('click', () => {
+    const target = document.querySelector('#contact_me');
+    target.scrollIntoView({behavior: "smooth"});
+});
+
+skillsetBtn.addEventListener('click', () =>{
     const target = document.querySelector('#contact_me');
     target.scrollIntoView({behavior: "smooth"});
 });

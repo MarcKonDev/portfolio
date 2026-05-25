@@ -45,6 +45,11 @@ h4{
     font-family: 'FiraCode', 'Courier New', monospace;
 }
 
+.container_content_limit {
+    max-width: calc(var(--max-width) - (var(--content-offset) * 2));
+    margin: 120px auto;
+}
+
 a {
     text-decoration: none;
     color: var(--primary-text);
@@ -417,11 +422,6 @@ h1 {
 /* #endregion */
 
 /* #region about section*/
-
-.container_content_limit {
-    max-width: calc(var(--max-width) - (var(--content-offset) * 2));
-    margin: 120px auto;
-}
 
 #about_me {
     margin: 80px 0;
@@ -917,6 +917,15 @@ input::placeholder{
     height: 0;
 }
 
+.privacy-link{
+    color: var(--secondary-text);
+}
+
+.privacy-link:hover{
+    color: var(--primary-text);
+    border-bottom: 1px solid var(--secondary-text);
+}
+
 #privacy_btn label {
     position: relative;
     padding-left: 32px; 
@@ -940,6 +949,9 @@ input::placeholder{
     background-color: transparent;
 }
 
+#privacy_btn label:hover::before {
+    background-color: color-mix(in srgb, var(--secondary-text) 20%, transparent); 
+}
 
 #privacy:checked + label::after {
     content: "✓";
@@ -962,12 +974,40 @@ input::placeholder{
     margin-top: 24px;
     background-color: transparent;
     border: 1px solid var(--primary-text);
-    padding: 14px 24px;
+    /* padding: 14px 24px; */
     border-radius: 30px;
     color: var(--primary-text);
     cursor: pointer;
     font-size: 18px;
     font-weight: 400;
+    overflow: hidden;
+    position: relative;
+    width: 160px;
+    height: 52px;
+}
+
+#submit_btn{
+    display: flex;
+    justify-content: flex-start;
+    width: 200%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+
+#submit_btn span {
+    width: 50%;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Karla', 'Courier New', monospace;
+}
+
+#form_btn:hover #submit_btn {
+    animation: marqueeLoop 3s linear infinite;
+    transition: transform 0s;
 }
 
 #contact_form input {

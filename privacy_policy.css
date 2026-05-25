@@ -1,0 +1,44 @@
+#limit{
+    padding: 0 96px;
+    margin-top: 40px;
+}
+
+.legal_notice_title{
+    font-size: 64px;
+    color: var(--secondary-text);
+}
+
+.legal_notice_content{
+    margin-top: 50px;
+}
+
+.legal_notice_block h2{
+    font-size: 18px;
+    color: var(--primary-text);
+    text-align: start;
+    margin-bottom: 6px;
+}
+
+.legal_notice_block{
+    font-size: 16px;
+    color: var(--secondary-text);
+    margin-top: 20px;
+}
+
+.legal_notice_block ul{
+    margin-top: 16px;
+    margin-left: 16px;
+}
+
+.legal_notice_date{
+    margin-top: 20px;
+    color: var(--secondary-text);
+}
+
+a{
+    color: var(--secondary-text);
+}
+
+#footer_list a, #menu_list a{
+    color: var(--primary-text);
+}
