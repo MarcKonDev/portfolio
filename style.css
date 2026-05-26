@@ -709,8 +709,71 @@ h1 {
     transition: transform 0.2s ease-in-out;
 }
 
-.svg_divs svg:hover {
+.svg_divs:hover svg {
     transform: scale(1.1);
+}
+
+#growth_mindset{
+    position: relative;
+}
+
+#growth_mindset:hover #mindset_overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#growth_mindset:hover p{
+    color: var(--secondary-text);
+}
+
+#mindset_overlay{
+    position: absolute;
+    top: -132px;
+    left: -20px;
+    border-radius: 20px;
+    background-color: var(--primary-text);
+    color: var(--secondary-text);
+    width: 220px;
+    padding: 6px 26px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease
+}
+
+#mindset_overlay::before {
+    content: "";
+    position: absolute;
+    
+    bottom: -10px;       
+    left: 33%;
+    transform: translateX(-50%);
+    
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;   
+    border-right: 10px solid transparent;  
+    border-top: 10px solid var(--primary-text); 
+}
+
+#mindset_overlay p{
+    margin-bottom: 10px;
+}
+
+#mindset_inner{
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.mindset_langs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mindset_langs svg{
+    width: 40px;
+    height: 40px;
 }
 
 /* #endregion */
