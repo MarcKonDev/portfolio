@@ -202,6 +202,36 @@ a {
     font-size: 20px;
 }
 
+.nav-link{
+    position: relative;
+    text-decoration: none;
+    padding-bottom: 8px;
+    display: inline-block;
+    color: var(--primary-text); 
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: var(--secondary-text); 
+}
+
+.nav-link::after{
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--secondary-text);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-link:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1); 
+}
 /* #endregion */
 
 #hero {
@@ -419,6 +449,44 @@ h1 {
     font-size: 18px;
 }
 
+#social_email:hover{
+    color: var(--secondary-text);
+}
+
+#svg_container a {
+    position: relative; 
+    display: inline-block;
+    line-height: 0;    
+}
+
+#svg_container a::after {
+    content: "";
+    position: absolute;
+    
+    left: 38px;           
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    
+   
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--secondary-text);
+    opacity: 0;
+    
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#svg_container a:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1); 
+}
+
+#svg_container a:hover svg path {
+    fill: var(--primary-text);
+    transition: fill 0.25s ease;
+}
+
 /* #endregion */
 
 /* #region about section*/
@@ -433,11 +501,37 @@ h1 {
     justify-items: center;
 }
 
+#portrait {
+    position: relative; /* WICHTIG: Erlaubt dem Muster, sich am Container auszurichten */
+    display: inline-block; /* Der Container zieht sich exakt auf die Bildgröße zusammen */
+}
+
 #portrait img {
     width: 568px;
     height: 568px;
     object-fit: cover;
     border-radius: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+#portrait::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: -40px; 
+    width: 568px;
+    height: 568px;
+    border-radius: 30px;
+    z-index: 1;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        var(--secondary-text) 30px,
+        var(--secondary-text) 31px 
+    );
+    opacity: 0.8; 
 }
 
 #who_i_am {
@@ -699,6 +793,56 @@ h1 {
 .prev_projects h3{
     font-size: 24px;
     font-weight: 700;
+}
+
+.prev_imgs{
+    width: 280px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+#project_area {
+    position: relative; 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.prev_imgs {
+    position: absolute; 
+    max-width: 100%;
+    height: auto;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+}
+
+.prev_imgs.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2; 
+}
+
+#img-join {
+    top: 40%; 
+    transform-origin: top right; 
+}
+
+#img-pollo {
+    top: 72%;
+    transform: translateY(-50%) scale(0.95); 
+    transform-origin: center right;
+}
+
+#img-pollo.active {
+    transform: translateY(-50%) scale(1);
+}
+
+#img-bubble {
+    bottom: 0; 
+    transform-origin: bottom right; 
 }
 
 /* #endregion */
@@ -1027,7 +1171,43 @@ input::placeholder{
 
 #footer_list {
     list-style: none;
-    line-height: 1.5;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#footer_list li a {
+    position: relative; 
+    display: inline-block;
+    color: var(--primary-text);
+    
+    padding-left: 16px; 
+    transition: color 0.3s ease;
+}
+
+#footer_list li a:hover {
+    color: var(--secondary-text);
+}
+
+#footer_list li a::after {
+    content: "";
+    position: absolute;
+    
+    left: 2px;      
+    top: 50%;
+    transform: translateY(-50%) scale(0); 
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--secondary-text) !important;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#footer_list li a:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
 }
 
 #footer_text_area {
@@ -1040,6 +1220,7 @@ input::placeholder{
     flex-direction: column;
     gap: 20px;
 }
+/* #endregion */
 
 /* #endregion */
 

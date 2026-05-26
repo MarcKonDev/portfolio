@@ -24,9 +24,9 @@
                 <div id="menu_elements">
                     <div>
                         <ul id="menu_list">
-                            <li><a href="#about_me" data-key="nav_about">About me</a></li>
-                            <li><a href="#skills" data-key="nav_skills">Skills</a></li>
-                            <li><a href="#portfolio" data-key="nav_projects">Projects</a></li>
+                            <li><a href="#about_me" class="nav-link" data-key="nav_about">About me</a></li>
+                            <li><a href="#skills" class="nav-link" data-key="nav_skills">Skills</a></li>
+                            <li><a href="#portfolio" class="nav-link" data-key="nav_projects">Projects</a></li>
                         </ul>
                     </div>
                     <div>
@@ -380,7 +380,7 @@
                     <h4>Portfolio</h4>
                     <h2>Featured Projects</h2>
                     <p>Explore a section of my work here - Interact with projects to see my skills in action.</p>
-                    <div class="prev_projects">
+                    <div class="prev_projects" data-project="join">
                         <h3>Join</h3>
                         <div class="used_langs">
                             <span>Angular</span>
@@ -390,7 +390,7 @@
                             <span>Firebase</span>
                         </div>
                     </div>
-                    <div class="prev_projects">
+                    <div class="prev_projects" data-project="pollo">
                         <h3>El Pollo Loco</h3>
                         <div class="used_langs">
                             <span>HTML</span>
@@ -398,7 +398,7 @@
                             <span>JavaScript</span>
                         </div>
                     </div>
-                    <div class="prev_projects">
+                    <div class="prev_projects" data-project="bubble">
                         <h3>DA Bubble</h3>
                         <div class="used_langs">
                             <span>Angular</span>
@@ -408,7 +408,9 @@
                     </div>
                 </div>
                 <div id="project_area">
-
+                    <img id="img-join" class="prev_imgs" src="./img/Join.jpg" alt="">
+                    <img id="img-pollo" class="prev_imgs" src="./img/el_pollo_loco.jpg" alt="">
+                    <img id="img-bubble" class="prev_imgs" src="./img/DABubble.jpg" alt="">
                 </div>
             </div>
         </section>
@@ -545,7 +547,7 @@
             <div>
                 <ul id="footer_list">
                     <li><a target="_blank" href="https://github.com/MarcKonDev">Github</a></li>
-                    <li><a href="#">LinkedIn</a></li>
+                    <li><a target="_blank" href="https://de.linkedin.com/">LinkedIn</a></li>
                     <li><a href="mailto:marc.konopka@web.de">Email</a></li>
                     <li><a href="./legal_notice.html">Legal Notice</a></li>
                 </ul>

@@ -91,3 +91,26 @@ document.addEventListener("DOMContentLoaded", () => {
     updateDots();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const projectRows = document.querySelectorAll('.prev_projects');
+    
+    projectRows.forEach(row => {
+        row.addEventListener('mouseenter', () => {
+            const projectName = row.getAttribute('data-project'); 
+            const targetImg = document.getElementById(`img-${projectName}`); 
+            
+            if (targetImg) {
+                targetImg.classList.add('active');
+            }
+        });
+
+        row.addEventListener('mouseleave', () => {
+            const projectName = row.getAttribute('data-project');
+            const targetImg = document.getElementById(`img-${projectName}`);
+            
+            if (targetImg) {
+                targetImg.classList.remove('active'); 
+            }
+        });
+    });
+});
