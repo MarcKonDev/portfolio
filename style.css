@@ -351,6 +351,8 @@ h1 {
     font-size: 32px;
     color: var(--secondary-text);
     padding: 0 8px;
+    white-space: pre;
+    letter-spacing: 2px;
 }
 
 @keyframes marquee {
