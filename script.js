@@ -1,55 +1,53 @@
 const langToggle = document.getElementById('lang-toggle');
+let currentTranslations = {};
 
-const translations = {
-    'en': {
-        'nav_about': 'About me',
-        'nav_skills': 'Skills',
-        'nav_projects': 'Projects',
-        'hero_subtitle': 'Frontend Developer',
-        'btn_work': 'Check my work',
-        'btn_contact': 'Contact me',
-        'ticker_text': 'Frontend Developer • Based in Munich • Open to work • Available for remote work •'
-    },
-    'de': {
-        'nav_about': 'Über mich',
-        'nav_skills': 'Fähigkeiten',
-        'nav_projects': 'Projekte',
-        'hero_subtitle': 'Frontend Entwickler',
-        'btn_work': 'Meine Projekte',
-        'btn_contact': 'Kontakt',
-        'ticker_text': 'Frontend Entwickler • München • Offen für Jobs • Remote verfügbar •'
+async function loadTranslations(lang) {
+    try {
+        const response = await fetch(`./lang/${lang}.json`);
+        currentTranslations = await response.json();
+        updateStaticTexts();
+    } catch (error) {
+        console.error("Fehler beim Laden der Übersetzung:", error);
     }
-};
+}
 
-const toPortfolioBtn = document.querySelector('#check_work_btn');
-const toContactBtn = document.querySelector('#contact_btn');
-const skillsetBtn = document.querySelector('#skillset_btn')
-
-toPortfolioBtn.addEventListener('click', ()=>{
-    const target = document.querySelector('#portfolio');
-    target.scrollIntoView({behavior: "smooth"});
-});
-
-toContactBtn.addEventListener('click', () => {
-    const target = document.querySelector('#contact_me');
-    target.scrollIntoView({behavior: "smooth"});
-});
-
-skillsetBtn.addEventListener('click', () =>{
-    const target = document.querySelector('#contact_me');
-    target.scrollIntoView({behavior: "smooth"});
-});
+function updateStaticTexts() {
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (currentTranslations[key]) {
+            element.textContent = currentTranslations[key];
+        }
+    });
+}
 
 langToggle.addEventListener('change', () => {
     const language = langToggle.checked ? 'de' : 'en';
-    
-    document.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
-        if (translations[language][key]) {
-            element.textContent = translations[language][key];
-        }
-    });
+    loadTranslations(language);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadTranslations('en');
+    
+    setupScrollButtons(); 
+});
+
+function setupScrollButtons() {
+    const toPortfolioBtn = document.querySelector('#check_work_btn');
+    const toContactBtn = document.querySelector('#contact_btn');
+    const skillsetBtn = document.querySelector('#skillset_btn');
+
+    toPortfolioBtn?.addEventListener('click', () => {
+        document.querySelector('#portfolio')?.scrollIntoView({ behavior: "smooth" });
+    });
+
+    toContactBtn?.addEventListener('click', () => {
+        document.querySelector('#contact_me')?.scrollIntoView({ behavior: "smooth" });
+    });
+
+    skillsetBtn?.addEventListener('click', () => {
+        document.querySelector('#contact_me')?.scrollIntoView({ behavior: "smooth" });
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".testimonial_container");
@@ -57,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.querySelector(".prev_btn");
     const dots = document.querySelectorAll(".dot");
 
-    let currentDotIndex = 1; 
+    let currentDotIndex = 1;
 
     function updateDots() {
         dots.forEach((dot, i) => {
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     nextBtn.addEventListener("click", () => {
         const firstCard = container.querySelector(".testimonials");
-        
+
         container.appendChild(firstCard);
 
         currentDotIndex = (currentDotIndex + 1) % dots.length;
@@ -93,12 +91,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const projectRows = document.querySelectorAll('.prev_projects');
-    
+
     projectRows.forEach(row => {
         row.addEventListener('mouseenter', () => {
-            const projectName = row.getAttribute('data-project'); 
-            const targetImg = document.getElementById(`img-${projectName}`); 
-            
+            const projectName = row.getAttribute('data-project');
+            const targetImg = document.getElementById(`img-${projectName}`);
+
             if (targetImg) {
                 targetImg.classList.add('active');
             }
@@ -107,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
         row.addEventListener('mouseleave', () => {
             const projectName = row.getAttribute('data-project');
             const targetImg = document.getElementById(`img-${projectName}`);
-            
+
             if (targetImg) {
-                targetImg.classList.remove('active'); 
+                targetImg.classList.remove('active');
             }
         });
     });
