@@ -118,12 +118,15 @@
                     <img src="./img/portrait.png" alt="Portrait">
                 </div>
                 <div id="who_i_am">
-                    <h4>Who I Am</h4>
+                    <h4 data-key="who_i_am">Who I Am</h4>
                     <div id="about_me_text">
-                        <h2>About me</h2>
-                        <p>Hey there, I'm. Lukas! Write some information about yourself that is IT related Why are you
-                            passionate about coding? What is your source of inspiration of improving your programming
-                            skills?</p>
+                        <h2 data-key="about_me">About me</h2>
+                        <p data-key="i_am_marc">Hey there, I'm Marc! My journey into frontend development is driven by a
+                            passion for creating
+                            clean, interactive, and user-friendly web applications. For me, coding isn't just about
+                            writing lines of text—it's the perfect mix of logical problem-solving and creative design.
+                            What inspires me most is the ability to turn a blank screen into a digital experience that
+                            actually helps people in their daily lives.</p>
                         <div id="details_container">
                             <div class="detail_items">
                                 <div class="detail_icon">
@@ -134,7 +137,7 @@
                                             fill="#3DCFB6" />
                                     </svg>
                                 </div>
-                                <div class="detail_text">
+                                <div class="detail_text" data-key="based_in">
                                     <p>Where are you based? Would you be open to working remotely or potentially
                                         relocating?</p>
                                 </div>
@@ -148,7 +151,7 @@
                                             fill="#3DCFB6" />
                                     </svg>
                                 </div>
-                                <div class="detail_text">
+                                <div class="detail_text" data-key="what_i_love">
                                     <p>Show that you are open-minded. Are you enthusiastic about learning new
                                         technologies and continually improving your skills?</p>
                                 </div>
@@ -162,7 +165,7 @@
                                             fill="#3DCFB6" />
                                     </svg>
                                 </div>
-                                <div class="detail_text">
+                                <div class="detail_text" data-key="brief_description">
                                     <p>A brief description of your problem-solving approach.
                                         Do you learn from each challenge as you search for the most efficient or elegant
                                         solution? You can include some keywords like: analytical thinking, creativity,
@@ -180,25 +183,28 @@
         <section id="skills">
             <div id="skills_grid">
                 <div id="skillset_wrapper">
-                    <h4>Technologies</h4>
+                    <h4 data-key="technologies">Technologies</h4>
                     <div id="skillset">
-                        <h2>Skill Set</h2>
+                        <h2 data-key="skillset">Skill Set</h2>
                         <div id="skillset_text">
-                            <p id="text_18">A short introduction of your skills. Highlight your experience of using
+                            <p id="text_18" data-key="short_intro">A short introduction of your skills. Highlight your
+                                experience of using
                                 different
                                 front-end
                                 technologies and emphasise your opennes to learning and adapting to new technologies.
                                 Show
                                 how important it is for you to keep up with the rapid changes in web development.</p>
-                            <h3>You need <span>another skill?</span></h3>
-                            <p id="text_16">feel free to contact me. I look forward to expanding on my previous
+                            <h3><span data-key="you_need">You need</span> <span data-key="another_skill">another
+                                    skill?</span></h3>
+                            <p id="text_16" data-key="feel_free">feel free to contact me. I look forward to expanding on
+                                my previous
                                 knowledge.</p>
                         </div>
                         <div>
                             <button id="skillset_btn">
                                 <div id="skillset_marquee">
-                                    <span>Let's Talk</span>
-                                    <span>Let's Talk</span>
+                                    <span data-key="lets_talk">Let's Talk</span>
+                                    <span data-key="lets_talk">Let's Talk</span>
                                 </div>
                             </button>
                         </div>
@@ -368,7 +374,7 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p>Growth mindset</p>
+                        <p data-key="grow_mind">Growth mindset</p>
                         <div id="mindset_overlay">
                             <p>I have a special interest in learning</p>
                             <div id="mindset_inner">
@@ -408,8 +414,9 @@
             <div id="portfolio_grid">
                 <div id="present_projects">
                     <h4>Portfolio</h4>
-                    <h2>Featured Projects</h2>
-                    <p>Explore a section of my work here - Interact with projects to see my skills in action.</p>
+                    <h2 data-key="projects">Featured Projects</h2>
+                    <p data-key="project_prev">Explore a section of my work here - Interact with projects to see my
+                        skills in action.</p>
                     <div class="prev_projects" data-project="join">
                         <h3>Join</h3>
                         <div class="used_langs">
@@ -453,7 +460,7 @@
     </div>
     <div class="container_content_limit">
         <section id="references">
-            <h3>What my colleagues say about me</h3>
+            <h3 data-key="what_my">What my colleagues say about me</h3>
             <svg id="quote_icon" width="90" height="64" viewBox="0 0 90 64" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -462,7 +469,7 @@
             </svg>
             <div class="testimonial_container">
                 <article class="testimonials">
-                    <p>
+                    <p data-key="janisch">
                         Lukas has proven to be a reliable group partner. His technical skills and proactive approach
                         were cruicial to the success of our project.
                     </p>
@@ -472,7 +479,7 @@
                     </div>
                 </article>
                 <article class="testimonials">
-                    <p>
+                    <p data-key="fischer">
                         I had the good fortune of working with Simon in a group project at the Developer Akademie that
                         involved a lot of effort. He always stayed calm, cool, and focused.</p>
                     <div class="testimonial_author">
@@ -481,7 +488,7 @@
                     </div>
                 </article>
                 <article class="testimonials">
-                    <p>
+                    <p data-key="schulz">
                         Our project benefited enormously from Lukas efficient way of working.
                     </p>
                     <div class="testimonial_author">
@@ -513,40 +520,44 @@
         <section id="contact_me">
             <div class="contact_grid">
                 <div class="work_together">
-                    <h4 id="h4_thin">Contact me</h4>
-                    <h2>Let's work together</h2>
-                    <h4 id="h4_bold">Got a problem to solve</h4>
-                    <p id="contact_text">Encourage people to contact you and describe what role you are interested in.
+                    <h4 id="h4_thin" data-key="contact_me">Contact me</h4>
+                    <h2 data-key="work_together">Let's work together</h2>
+                    <h4 id="h4_bold" data-key="solve_prob">Got a problem to solve</h4>
+                    <p id="contact_text" data-key="contact_text">Encourage people to contact you and describe what role
+                        you are interested in.
                         Show that you will
                         add value to their projects trough your work.</p>
-                    <p>Need a Fronted developer?<span> Let's talk!</span></p>
+                    <p><span data-key="need_frontend">Need a Fronted developer?</span><span data-key="talk_about_dev">
+                            Let's talk!</span></p>
                 </div>
                 <div>
                     <form action="" id="contact_form">
                         <div class="form_container">
-                            <label for="name">What's your name?</label>
-                            <input type="text" id="name" placeholder="Your name goes here" required>
+                            <label for="name" data-key="contact_your_name">What's your name?</label>
+                            <input type="text" id="name" data-key="placeholder_name" placeholder="Your name goes here" required>
                         </div>
                         <div class="form_container">
-                            <label for="email">What's your email?</label>
-                            <input type="text" id="email" placeholder="youremail@email.com" required>
+                            <label for="email" data-key="contact_your_email">What's your email?</label>
+                            <input type="text" id="email" data-key="placeholder_email" placeholder="youremail@email.com" required>
                         </div>
                         <div class="form_container">
-                            <label for="question">How can I help you?</label>
-                            <input type="text" id="question" placeholder="Hello Lukas, I am interested in.." required>
+                            <label for="question" data-key="contact_help">How can I help you?</label>
+                            <input type="text" id="question" data-key="placeholder_question" placeholder="Hello Lukas, I am interested in.." required>
                         </div>
                         <div id="privacy_btn">
-                            <input type="checkbox" id="privacy">
-                            <label for="privacy">
-                                I've read the <a href="./privacy_policy.html" class="privacy-link">privacy policy</a>
-                                and
-                                agree to the processing of my data as outlined.
+                            <input type="checkbox" id="privacy" required>
+                            <label for="privacy" data-key="privacy">
+                                <span data-key="privacy_text_1">I've read the </span>
+                                <a href="./privacy_policy.html" class="privacy-link" data-key="privacy_link">privacy
+                                    policy</a>
+                                <span data-key="privacy_text_2"> and agree to the processing of my data as
+                                    outlined.</span>
                             </label>
                         </div>
                         <button id="form_btn">
                             <div id="submit_btn">
-                                <span>Say Hello ;&#41;</span>
-                                <span>Say Hello ;&#41;</span>
+                                <span data-key="say_hello">Say Hello ;&#41;</span>
+                                <span data-key="say_hello">Say Hello ;&#41;</span>
                             </div>
                         </button>
                     </form>
@@ -575,17 +586,17 @@
 
                     </svg>
                 </a>
-                <p>Web Developer Munich Germany</p>
+                <p data-key="web_dev_stgt">Web Developer Stuttgart Germany</p>
             </div>
             <div id="footer_text_area">
-                <p>© Likas Müller 2025</p>
+                <p>© Marc Dev 2026</p>
             </div>
             <div>
                 <ul id="footer_list">
                     <li><a target="_blank" href="https://github.com/MarcKonDev">Github</a></li>
                     <li><a target="_blank" href="https://de.linkedin.com/">LinkedIn</a></li>
                     <li><a href="mailto:marc.konopka@web.de">Email</a></li>
-                    <li><a href="./legal_notice.html">Legal Notice</a></li>
+                    <li><a href="./legal_notice.html" data-key="legal_notice">Legal Notice</a></li>
                 </ul>
             </div>
         </div>

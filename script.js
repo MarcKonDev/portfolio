@@ -14,8 +14,14 @@ async function loadTranslations(lang) {
 function updateStaticTexts() {
     document.querySelectorAll('[data-key]').forEach(element => {
         const key = element.getAttribute('data-key');
-        if (currentTranslations[key]) {
-            element.textContent = currentTranslations[key];
+        const translation = currentTranslations[key];
+
+        if (translation) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.setAttribute('placeholder', translation);
+            } else {
+                element.textContent = translation;
+            }
         }
     });
 }

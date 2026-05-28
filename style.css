@@ -648,7 +648,7 @@ h1 {
     font-size: 24px;
 }
 
-#skillset_text h3 span {
+#skillset_text h3 span:last-of-type {
     color: var(--secondary-text);
 }
 
@@ -1092,6 +1092,7 @@ h1 {
 .contact_grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
 .work_together {
@@ -1127,7 +1128,7 @@ h1 {
     margin-bottom: 16px;
 }
 
-.work_together span {
+.work_together span:last-of-type {
     color: var(--secondary-text);
 }
 
@@ -1324,7 +1325,7 @@ input::placeholder{
 }
 
 #footer_img_area{
-    max-width: 135px;
+    max-width: 165px;
     display: flex;
     flex-direction: column;
     gap: 20px;
