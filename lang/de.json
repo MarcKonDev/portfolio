@@ -44,5 +44,9 @@
     "web_dev_stgt": "Web Entwickler Stuttgart Deutschland",
     "legal_notice": "Impressum",
     "grow_mind": "Entwickler-Mindset",
-    "special_interest": "Ich habe ein besonderes Interesse am Lernen in:"
+    "special_interest": "Ich habe ein besonderes Interesse am Lernen in:",
+    "error_name": "Oops! Es sieht so aus, als ob dein Name fehlt",
+    "error_email": "Hoppla! Deine E-Mail-Adresse wird benötigt",
+    "error_question": "Was möchtest du entwickeln lassen?",
+    "error_privacy": "Bitte akzeptiere die Datenschutzerklärung."
 }

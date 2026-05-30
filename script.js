@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadTranslations('en');
     
     setupScrollButtons(); 
+    setupFormValidation();
 });
 
 function setupScrollButtons() {
@@ -118,3 +119,59 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+function setupFormValidation() {
+    const form = document.getElementById('contact_form');
+    if (!form) return;
+
+    const inputs = form.querySelectorAll('input[required]');
+
+    inputs.forEach(input => {
+        input.addEventListener('blur', () => {
+            validateInput(input);
+        });
+
+        input.addEventListener('input', () => {
+            if (input.value.trim() !== '') {
+                input.parentElement.classList.remove('invalid');
+            }
+        });
+    });
+
+    form.addEventListener('submit', (event) => {
+        let isFormValid = true;
+
+        inputs.forEach(input => {
+            const isValid = validateInput(input);
+            if (!isValid) {
+                isFormValid = false;
+            }
+        });
+
+        if (!isFormValid) {
+            event.preventDefault();
+        }
+    });
+}
+
+function validateInput(input) {
+    const parent = input.parentElement;
+    
+    if (input.type === 'checkbox') {
+        if (!input.checked) {
+            parent.classList.add('invalid');
+            return false;
+        } else {
+            parent.classList.remove('invalid');
+            return true;
+        }
+    } else {
+        if (input.value.trim() === '') {
+            parent.classList.add('invalid');
+            return false;
+        } else {
+            parent.classList.remove('invalid');
+            return true;
+        }
+    }
+}

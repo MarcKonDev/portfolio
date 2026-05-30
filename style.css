@@ -1162,6 +1162,7 @@ input::placeholder{
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 #privacy {
@@ -1332,7 +1333,28 @@ input::placeholder{
 }
 /* #endregion */
 
-/* #endregion */
+.error-message {
+    color: #E77A7A; 
+    font-size: 16px;
+    display: block;
+    
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.2s ease-in-out;
+    visibility: hidden;
+}
+
+.form_container.invalid .error-message,
+#privacy_btn.invalid .error-message {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.form_container.invalid input {
+    border-bottom: 1px solid #E77A7A !important; 
+}
+
 
 
 @media (max-width: 1440px) {
