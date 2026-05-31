@@ -48,5 +48,6 @@
     "error_name": "Oops! Es sieht so aus, als ob dein Name fehlt",
     "error_email": "Hoppla! Deine E-Mail-Adresse wird benötigt",
     "error_question": "Was möchtest du entwickeln lassen?",
-    "error_privacy": "Bitte akzeptiere die Datenschutzerklärung."
+    "error_privacy": "Bitte akzeptiere die Datenschutzerklärung.",
+    "error_email_invalid": "Bitte gib eine gültige E-Mail-Adresse ein."
 }

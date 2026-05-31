@@ -48,5 +48,6 @@
     "error_name": "Oops! It seems your name is missing",
     "error_email": "Hoppla! Your email is required",
     "error_question": "What do you need to develop?",
-    "error_privacy": "Please accept the privacy policy."
+    "error_privacy": "Please accept the privacy policy.",
+    "error_email_invalid": "Please enter a valid email address."
 }

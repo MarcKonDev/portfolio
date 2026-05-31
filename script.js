@@ -132,7 +132,11 @@ function setupFormValidation() {
         });
 
         input.addEventListener('input', () => {
-            if (input.value.trim() !== '') {
+            if (input.id === 'email') {
+                // Bei der E-Mail löschen wir beim Tippen vorsorglich beide Fehlerklassen
+                input.parentElement.classList.remove('invalid', 'invalid_format');
+            } else {
+                // Bei Name und Nachricht löschen wir nur die Standard-Fehlerklasse
                 input.parentElement.classList.remove('invalid');
             }
         });
@@ -154,6 +158,29 @@ function setupFormValidation() {
     });
 }
 
+// function validateInput(input) {
+//     const parent = input.parentElement;
+    
+//     if (input.type === 'checkbox') {
+//         if (!input.checked) {
+//             parent.classList.add('invalid');
+//             return false;
+//         } else {
+//             parent.classList.remove('invalid');
+//             return true;
+//         }
+//     } else {
+//         if (input.value.trim() === '') {
+//             parent.classList.add('invalid');
+//             return false;
+//         } else {
+//             parent.classList.remove('invalid');
+//             return true;
+//         }
+//     }
+// }
+
+
 function validateInput(input) {
     const parent = input.parentElement;
     
@@ -163,6 +190,21 @@ function validateInput(input) {
             return false;
         } else {
             parent.classList.remove('invalid');
+            return true;
+        }
+    } else if (input.id === 'email') {
+        const emailValue = input.value.trim();
+        // Ein Standard-Regex für gültige E-Mail-Adressen
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailValue === '') {
+            parent.classList.add('invalid');
+            return false;
+        } else if (!emailPattern.test(emailValue)) {
+            parent.classList.add('invalid_format');
+            return false;
+        } else {
+            parent.classList.remove('invalid', 'invalid_format');
             return true;
         }
     } else {

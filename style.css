@@ -1138,6 +1138,8 @@ h1 {
     gap: 16px;
     padding: 20px 20px;
     border-bottom: 1px solid var(--secondary-text);
+    padding-bottom: 30px; 
+    position: relative;
 }
 
 .form_container label{
@@ -1163,6 +1165,8 @@ input::placeholder{
     align-items: flex-start;
     gap: 12px;
     flex-wrap: wrap;
+    padding-bottom: 24px;
+    position: relative;
 }
 
 #privacy {
@@ -1268,6 +1272,7 @@ input::placeholder{
 #contact_form input {
     background-color: transparent;
     border: none;
+    color: var(--primary-text);
 }
 
 /* #endregion */
@@ -1337,6 +1342,9 @@ input::placeholder{
     color: #E77A7A; 
     font-size: 16px;
     display: block;
+    position: absolute;
+    bottom: 6px;
+    
     
     opacity: 0;
     transform: translateY(-5px);
@@ -1344,15 +1352,28 @@ input::placeholder{
     visibility: hidden;
 }
 
-.form_container.invalid .error-message,
+.form_container.invalid .error-empty,
+.form_container.invalid .error-message:not(.error-invalid), 
 #privacy_btn.invalid .error-message {
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
 }
 
-.form_container.invalid input {
-    border-bottom: 1px solid #E77A7A !important; 
+.form_container.invalid_format .error-invalid {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+
+
+#privacy_btn .error-message {
+    position: absolute;
+    bottom: 0;
+    left: 32px; 
+    width: auto;
 }
 
 
