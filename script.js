@@ -158,29 +158,6 @@ function setupFormValidation() {
     });
 }
 
-// function validateInput(input) {
-//     const parent = input.parentElement;
-    
-//     if (input.type === 'checkbox') {
-//         if (!input.checked) {
-//             parent.classList.add('invalid');
-//             return false;
-//         } else {
-//             parent.classList.remove('invalid');
-//             return true;
-//         }
-//     } else {
-//         if (input.value.trim() === '') {
-//             parent.classList.add('invalid');
-//             return false;
-//         } else {
-//             parent.classList.remove('invalid');
-//             return true;
-//         }
-//     }
-// }
-
-
 function validateInput(input) {
     const parent = input.parentElement;
     
