@@ -194,3 +194,56 @@ function validateInput(input) {
         }
     }
 }
+
+const projPrev = document.querySelectorAll('.prev_projects');
+const overlay = document.getElementById('overlay_backdrop');
+const projectNumber = document.getElementById('overlay_number');
+const projectName = document.getElementById('overlay_project');
+const projectDescription = document.getElementById('overlay_description')
+const projectImage = document.getElementById('overlay_img');
+const projectGithub = document.getElementById('overlay_git');
+const projectLive = document.getElementById('overlay_live');
+
+projPrev.forEach((project, index) => {
+    project.addEventListener('click', () => {
+        overlay.classList.remove('d_none');
+        changeText(index);
+    })
+})
+
+function changeText(index){
+    projectNumber.innerHTML = projectsData[index].number;
+    projectName.innerHTML = projectsData[index].title;
+    projectDescription.innerHTML = projectsData[index].description;
+    projectImage.src = projectsData[index].image;
+    projectGithub.href = projectsData[index].github;
+    projectLive.href = projectsData[index].live;
+
+}
+
+const projectsData = [
+    {
+        number: "01",
+        title: "Join",
+        description: "Description 1",
+        image: "./img/Join.webp",
+        github: "https://github.com/MarcKonDev",
+        live: "https://marckondev.github.io/Join-fertig/"
+    },
+    {
+        number: "02",
+        title: "El Pollo Loco",
+        description: "Description 2",
+        image: "./img/el_pollo_loco.webp",
+        github: "https://github.com/MarcKonDev",
+        live: "https://marckondev.github.io/El_Pollo_Loco/"
+    },
+    {
+        number: "03",
+        title: "DA Bubble",
+        description: "Description 3",
+        image: "./img/DABubble.webp",
+        github: "https://github.com/MarcKonDev",
+        live: "#"
+    }
+]

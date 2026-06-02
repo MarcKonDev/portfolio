@@ -1527,15 +1527,24 @@ input::placeholder{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8); 
+    background-color: rgba(0, 0, 0, 0.7); 
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 999;
+    backdrop-filter: blur(3px);
 }
 
-/* .d_none{
+.d_none{
     display: none!important;
+}
+
+/* .no-scroll {
+    overflow: hidden;
+} */
+
+/* html {
+    scrollbar-gutter: stable;
 } */
 
 @media (max-width: 1440px) {
