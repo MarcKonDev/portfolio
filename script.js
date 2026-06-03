@@ -203,6 +203,14 @@ const projectDescription = document.getElementById('overlay_description')
 const projectImage = document.getElementById('overlay_img');
 const projectGithub = document.getElementById('overlay_git');
 const projectLive = document.getElementById('overlay_live');
+const projectNextBtn = document.getElementById('next_project');
+
+let currentProjectIndex = 0;
+
+projectNextBtn.addEventListener('click', () => {
+    currentProjectIndex = (currentProjectIndex + 1) % projectsData.length;
+    changeText(currentProjectIndex);
+});
 
 projPrev.forEach((project, index) => {
     project.addEventListener('click', () => {
