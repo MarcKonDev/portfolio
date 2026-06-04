@@ -1393,7 +1393,7 @@ input::placeholder{
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    padding: 90px 80px;
+    padding: 0 80px;
 }
 
 #project_text h2{
@@ -1539,13 +1539,13 @@ input::placeholder{
     display: none!important;
 }
 
-/* .no-scroll {
+.no-scroll {
     overflow: hidden;
-} */
+}
 
-/* html {
+html {
     scrollbar-gutter: stable;
-} */
+}
 
 @media (max-width: 1440px) {
     #indicator_container {

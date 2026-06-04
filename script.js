@@ -1,3 +1,33 @@
+const projectsData = [
+    {
+        number: "01",
+        title: "Join",
+        description: "Description 1",
+        image: "./img/Join.webp",
+        github: "https://github.com/MarcKonDev",
+        live: "https://marckondev.github.io/Join-fertig/",
+        langs: ['lang_css', 'lang_html', 'lang_firebase', 'lang_angular', 'lang_typescript']
+    },
+    {
+        number: "02",
+        title: "El Pollo Loco",
+        description: "Description 2",
+        image: "./img/el_pollo_loco.webp",
+        github: "https://github.com/MarcKonDev",
+        live: "https://marckondev.github.io/El_Pollo_Loco/",
+        langs: ['lang_css', 'lang_html', 'lang_javascript']
+    },
+    {
+        number: "03",
+        title: "DA Bubble",
+        description: "Description 3",
+        image: "./img/DABubble.webp",
+        github: "https://github.com/MarcKonDev",
+        live: "#",
+        langs: ['lang_css', 'lang_html', 'lang_javascript']
+    }
+]
+
 const langToggle = document.getElementById('lang-toggle');
 let currentTranslations = {};
 
@@ -33,8 +63,8 @@ langToggle.addEventListener('change', () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     loadTranslations('en');
-    
-    setupScrollButtons(); 
+
+    setupScrollButtons();
     setupFormValidation();
 });
 
@@ -160,7 +190,7 @@ function setupFormValidation() {
 
 function validateInput(input) {
     const parent = input.parentElement;
-    
+
     if (input.type === 'checkbox') {
         if (!input.checked) {
             parent.classList.add('invalid');
@@ -197,6 +227,7 @@ function validateInput(input) {
 
 const projPrev = document.querySelectorAll('.prev_projects');
 const overlay = document.getElementById('overlay_backdrop');
+const overlayInner = document.getElementById('project_overlay');
 const projectNumber = document.getElementById('overlay_number');
 const projectName = document.getElementById('overlay_project');
 const projectDescription = document.getElementById('overlay_description')
@@ -204,6 +235,8 @@ const projectImage = document.getElementById('overlay_img');
 const projectGithub = document.getElementById('overlay_git');
 const projectLive = document.getElementById('overlay_live');
 const projectNextBtn = document.getElementById('next_project');
+const closeOverlayBtn = document.getElementById('close_overlay_btn');
+const allLangElements = document.querySelectorAll('.overlay_langs');
 
 let currentProjectIndex = 0;
 
@@ -215,11 +248,25 @@ projectNextBtn.addEventListener('click', () => {
 projPrev.forEach((project, index) => {
     project.addEventListener('click', () => {
         overlay.classList.remove('d_none');
+        document.body.classList.add('no-scroll');
         changeText(index);
     })
 })
 
-function changeText(index){
+closeOverlayBtn.addEventListener('click', () => {
+    overlay.classList.add('d_none');
+    document.body.classList.remove('no-scroll');
+});
+
+overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) {
+        overlay.classList.add('d_none');
+        document.body.classList.remove('no-scroll');
+    }
+});
+
+function changeText(index) {
+    currentProjectIndex = index;
     projectNumber.innerHTML = projectsData[index].number;
     projectName.innerHTML = projectsData[index].title;
     projectDescription.innerHTML = projectsData[index].description;
@@ -227,31 +274,14 @@ function changeText(index){
     projectGithub.href = projectsData[index].github;
     projectLive.href = projectsData[index].live;
 
-}
+    allLangElements.forEach(element => {
+        element.classList.add('d_none');
+    });
 
-const projectsData = [
-    {
-        number: "01",
-        title: "Join",
-        description: "Description 1",
-        image: "./img/Join.webp",
-        github: "https://github.com/MarcKonDev",
-        live: "https://marckondev.github.io/Join-fertig/"
-    },
-    {
-        number: "02",
-        title: "El Pollo Loco",
-        description: "Description 2",
-        image: "./img/el_pollo_loco.webp",
-        github: "https://github.com/MarcKonDev",
-        live: "https://marckondev.github.io/El_Pollo_Loco/"
-    },
-    {
-        number: "03",
-        title: "DA Bubble",
-        description: "Description 3",
-        image: "./img/DABubble.webp",
-        github: "https://github.com/MarcKonDev",
-        live: "#"
-    }
-]
+    projectsData[index].langs.forEach(langClass => {
+        const element = document.querySelector(`.${langClass}`);
+        if (element) {
+            element.classList.remove('d_none');
+        }
+    });
+}
