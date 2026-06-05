@@ -49,5 +49,10 @@
     "error_email": "Hoppla! Deine E-Mail-Adresse wird benötigt",
     "error_question": "Was möchtest du entwickeln lassen?",
     "error_privacy": "Bitte akzeptiere die Datenschutzerklärung.",
-    "error_email_invalid": "Bitte gib eine gültige E-Mail-Adresse ein."
+    "error_email_invalid": "Bitte gib eine gültige E-Mail-Adresse ein.",
+    "what_about": "Worum geht es bei diesem Projekt?",
+    "next_btn": "Nächstes Projekt",
+    "project_01_desc": "Ein vom Kanban-System inspirierter Task-Manager. Erstelle und organisiere Aufgaben per Drag-and-Drop, weise Benutzer und Kategorien zu.",
+    "project_02_desc": "Ein Jump-and-Run-Spiel basierend auf einem objektorientierten Ansatz. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen die verrückte Henne zu kämpfen.",
+    "project_03_desc": "Diese App ist ein Slack-Klon. Sie revolutioniert die Teamkommunikation und Zusammenarbeit durch eine intuitive Benutzeroberfläche, Echtzeit-Nachrichten und robuste Kanalorganisation."
 }

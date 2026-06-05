@@ -49,5 +49,10 @@
     "error_email": "Hoppla! Your email is required",
     "error_question": "What do you need to develop?",
     "error_privacy": "Please accept the privacy policy.",
-    "error_email_invalid": "Please enter a valid email address."
+    "error_email_invalid": "Please enter a valid email address.",
+    "what_about": "What is this project about",
+    "next_btn": "Next project",
+    "project_01_desc": "Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign users and categories.",
+    "project_02_desc": "Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and tabasco salsa to fight against the crazy hen.",
+    "project_03_desc": "This App is a Slack Clone App. It revolutionizes team communication and collaboration with its intuitive interface, real-time messaging, and robust channel organization."
 }

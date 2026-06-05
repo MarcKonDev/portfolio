@@ -2,7 +2,7 @@ const projectsData = [
     {
         number: "01",
         title: "Join",
-        description: "Description 1",
+        descKey: "project_01_desc",
         image: "./img/Join.webp",
         github: "https://github.com/MarcKonDev",
         live: "https://marckondev.github.io/Join-fertig/",
@@ -11,7 +11,7 @@ const projectsData = [
     {
         number: "02",
         title: "El Pollo Loco",
-        description: "Description 2",
+        descKey: "project_02_desc",
         image: "./img/el_pollo_loco.webp",
         github: "https://github.com/MarcKonDev",
         live: "https://marckondev.github.io/El_Pollo_Loco/",
@@ -20,7 +20,7 @@ const projectsData = [
     {
         number: "03",
         title: "DA Bubble",
-        description: "Description 3",
+        descKey: "project_03_desc",
         image: "./img/DABubble.webp",
         github: "https://github.com/MarcKonDev",
         live: "#",
@@ -31,11 +31,15 @@ const projectsData = [
 const langToggle = document.getElementById('lang-toggle');
 let currentTranslations = {};
 
+
 async function loadTranslations(lang) {
     try {
         const response = await fetch(`./lang/${lang}.json`);
         currentTranslations = await response.json();
         updateStaticTexts();
+        if (overlay && !overlay.classList.contains('d_none')) {
+            changeText(currentProjectIndex);
+        }
     } catch (error) {
         console.error("Fehler beim Laden der Übersetzung:", error);
     }
@@ -163,10 +167,8 @@ function setupFormValidation() {
 
         input.addEventListener('input', () => {
             if (input.id === 'email') {
-                // Bei der E-Mail löschen wir beim Tippen vorsorglich beide Fehlerklassen
                 input.parentElement.classList.remove('invalid', 'invalid_format');
             } else {
-                // Bei Name und Nachricht löschen wir nur die Standard-Fehlerklasse
                 input.parentElement.classList.remove('invalid');
             }
         });
@@ -267,12 +269,14 @@ overlay.addEventListener('click', (event) => {
 
 function changeText(index) {
     currentProjectIndex = index;
+    const project = projectsData[index];
     projectNumber.innerHTML = projectsData[index].number;
     projectName.innerHTML = projectsData[index].title;
     projectDescription.innerHTML = projectsData[index].description;
     projectImage.src = projectsData[index].image;
     projectGithub.href = projectsData[index].github;
     projectLive.href = projectsData[index].live;
+    projectDescription.innerHTML = currentTranslations[project.descKey] || "No Description";
 
     allLangElements.forEach(element => {
         element.classList.add('d_none');
