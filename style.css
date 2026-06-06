@@ -700,6 +700,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 48px;
+    justify-items: center;
 }
 
 .svg_divs {
@@ -1393,7 +1394,7 @@ input::placeholder{
     width: 100%;
     height: 656px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(520px, 1fr) 1fr;
     background: linear-gradient(to left bottom, var(--secondary-background) 0%, var(--primary-background) 50%);
     border: 1px solid var(--secondary-text);
     border-radius: 20px;
@@ -1576,4 +1577,70 @@ html {
         margin-right: var(--content-offset);
         margin-left: var(--content-offset);
     }
+}
+
+@media (max-width: 1100px) {
+    #about_grid{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #portrait img{
+        height: 450px;
+    }
+
+    #portrait{
+        padding: 0;
+    }
+
+    #portrait::before{
+        display: none;
+    }
+
+    #skills_grid{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #svg_grid{
+        margin-top: 60px;
+        max-width: 700px;
+        width: 100%;
+        height: 500px;
+    }
+
+    #portfolio_grid{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #project_area{
+        display: none;
+    }
+
+    .testimonials{
+        flex: 0 0 350px;
+        height: 290px;
+    }
+
+    .contact_grid{
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+    }
+
+    #project_overlay{
+        gap: 20px;
+    }
+
+    #project_image img{
+        max-width: 520px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 720px){
+
 }

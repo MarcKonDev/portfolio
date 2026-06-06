@@ -29,7 +29,20 @@ const projectsData = [
 ]
 
 const langToggle = document.getElementById('lang-toggle');
+const projPrev = document.querySelectorAll('.prev_projects');
+const overlay = document.getElementById('overlay_backdrop');
+const overlayInner = document.getElementById('project_overlay');
+const projectNumber = document.getElementById('overlay_number');
+const projectName = document.getElementById('overlay_project');
+const projectDescription = document.getElementById('overlay_description')
+const projectImage = document.getElementById('overlay_img');
+const projectGithub = document.getElementById('overlay_git');
+const projectLive = document.getElementById('overlay_live');
+const projectNextBtn = document.getElementById('next_project');
+const closeOverlayBtn = document.getElementById('close_overlay_btn');
+const allLangElements = document.querySelectorAll('.overlay_langs');
 let currentTranslations = {};
+let currentProjectIndex = 0;
 
 
 async function loadTranslations(lang) {
@@ -227,21 +240,6 @@ function validateInput(input) {
     }
 }
 
-const projPrev = document.querySelectorAll('.prev_projects');
-const overlay = document.getElementById('overlay_backdrop');
-const overlayInner = document.getElementById('project_overlay');
-const projectNumber = document.getElementById('overlay_number');
-const projectName = document.getElementById('overlay_project');
-const projectDescription = document.getElementById('overlay_description')
-const projectImage = document.getElementById('overlay_img');
-const projectGithub = document.getElementById('overlay_git');
-const projectLive = document.getElementById('overlay_live');
-const projectNextBtn = document.getElementById('next_project');
-const closeOverlayBtn = document.getElementById('close_overlay_btn');
-const allLangElements = document.querySelectorAll('.overlay_langs');
-
-let currentProjectIndex = 0;
-
 projectNextBtn.addEventListener('click', () => {
     currentProjectIndex = (currentProjectIndex + 1) % projectsData.length;
     changeText(currentProjectIndex);
@@ -272,7 +270,7 @@ function changeText(index) {
     const project = projectsData[index];
     projectNumber.innerHTML = projectsData[index].number;
     projectName.innerHTML = projectsData[index].title;
-    projectDescription.innerHTML = projectsData[index].description;
+   
     projectImage.src = projectsData[index].image;
     projectGithub.href = projectsData[index].github;
     projectLive.href = projectsData[index].live;
