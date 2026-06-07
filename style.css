@@ -1641,6 +1641,62 @@ html {
     }
 }
 
-@media (max-width: 720px){
+@media (max-width: 750px){
+    #switch_container{
+        display: none;
+    }
 
+    #menu_list{
+        display: none;
+    }
+
+    #menu_elements{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+
+    .container{
+        margin: 0;
+    }
+
+    #indicator_container{
+        left: 16px;
+    }
+
+    #socials_container{
+        right: 16px;
+    }
+
+    h1{
+        font-size: 62px;
+    }
+
+    h2{
+        font-size: 24px;
+    }
+
+    #check_work_btn{
+        width: 153px;
+    }
+
+    .hero_btns{
+        gap: 24px;
+    }
+
+    .container_content_limit{
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    .prev_projects{
+        flex-wrap: wrap;
+        padding: 0;
+    }
+    
+    .used_langs{
+        flex-wrap: wrap;
+    }
 }
