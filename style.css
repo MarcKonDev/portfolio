@@ -72,6 +72,14 @@ a {
     margin: 0 auto;
 }
 
+#mobile_nav {
+    display: none;
+}
+
+#overlay_mobile_nav {
+    display: none;
+}
+
 /* #region svg logo*/
 
 .logo-svg {
@@ -165,8 +173,10 @@ a {
     z-index: 1;
 }
 
-#lang-toggle:checked+.slider::before {
+#lang-toggle-desktop:checked + .slider::before,
+#lang-toggle-mobile:checked + .slider::before {
     transform: translateX(40px);
+    background-color: var(--secondary-text); 
 }
 
 .switch_text {
@@ -174,11 +184,13 @@ a {
     transition: 0.4s;
 }
 
-#lang-toggle:checked+.slider .text-en {
+#lang-toggle-desktop:checked + .slider .text-en,
+#lang-toggle-mobile:checked + .slider .text-en {
     color: var(--secondary-text-50percent);
 }
 
-#lang-toggle:not(:checked)+.slider .text-de {
+#lang-toggle-desktop:not(:checked) + .slider .text-de,
+#lang-toggle-mobile:not(:checked) + .slider .text-de {
     color: var(--secondary-text-50percent);
 }
 
@@ -1643,17 +1655,17 @@ html {
 }
 
 @media (max-width: 750px) {
-    #hero{
+    #hero {
         padding-top: 100px;
         justify-content: start;
 
     }
 
-    #indicator_line{
+    #indicator_line {
         height: 224px;
     }
 
-    #socials_line{
+    #socials_line {
         height: 112px;
     }
 
@@ -1759,81 +1771,129 @@ html {
         height: 48px;
     }
 
-    .work_together h4, 
-    .form_container label{
+    .work_together h4,
+    .form_container label {
         font-size: 20px;
     }
 
-    #form_btn{
+    #form_btn {
         width: 139px;
         height: 48px;
     }
 
-    #svg_grid{
+    #svg_grid {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    #project_overlay{
+    #project_overlay {
         display: flex;
         flex-direction: column-reverse;
-        height: 94%;                
+        height: 94%;
         justify-content: start;
         align-items: center;
     }
-    
-    #project_image{
+
+    #project_image {
         position: static;
         padding-top: 50px;
         padding-left: 40px;
         padding-right: 40px;
     }
 
-    #project_image img{
+    #project_image img {
         position: static;
         max-width: 342px;
         width: 100%;
     }
 
-    #close_overlay_btn{
+    #close_overlay_btn {
         top: 25px;
         right: 25px;
     }
 
-    #next_project{
+    #next_project {
         bottom: 25px;
         right: 25px;
     }
 
-    #project_text{
+    #project_text {
         padding: 0 20px;
     }
 
-    #project_text h2{
+    #project_text h2 {
         font-size: 72px;
     }
 
-    #project_text h3{
+    #project_text h3 {
         font-size: 56px;
         margin-bottom: 32px;
     }
 
-    #project_desc h4{
+    #project_desc h4 {
         font-size: 20px;
     }
 
-    #overlay_description{
+    #overlay_description {
         font-size: 16px;
     }
 
-    #social_email p{
+    #social_email p {
         display: none;
     }
 
-    #mail_svg{
+    #mail_svg {
         display: block;
     }
 
-    .testimonials{
+    .testimonials {
         flex: 0 0 340px;
+    }
+
+    #mobile_nav {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 35px;
+        cursor: pointer;
+    }
+
+    #overlay_mobile_nav {
+        border-radius: 30px;
+        text-align: center;
+        position: absolute;
+        right: 0;
+        top: 70px;
+        width: 238px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom, var(--primary-background) 0%, transparent 10%),
+            linear-gradient(to left bottom, var(--secondary-background) 0%, var(--primary-background) 50%);
+        gap: 20px;
+        padding: 20px 0;
+        z-index: 100;
+    }
+
+    #menu_list_mobile {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    #menu_list_mobile li {
+        font-size: 20px;
+    }
+
+    #switch_container_mobile {
+        display: flex;
+        align-items: center;
+    }
+    
+    #mobile_nav button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 }

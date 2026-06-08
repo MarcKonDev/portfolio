@@ -14,7 +14,7 @@
             <nav id="container_header" class="container">
                 <div id="switch_container">
                     <label class="switch">
-                        <input type="checkbox" id="lang-toggle">
+                        <input type="checkbox" id="lang-toggle-desktop">
                         <span class="slider">
                             <span class="text-en switch_text">EN</span>
                             <span class="text-de switch_text">DE</span>
@@ -50,6 +50,31 @@
                     </div>
                 </div>
             </nav>
+            <div id="mobile_nav">
+                <button>
+                    <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.769 21.077C0.551334 21.077 0.368667 21.0022 0.221 20.8525C0.0736666 20.7032 0 20.518 0 20.297C0 20.076 0.0736666 19.8943 0.221 19.752C0.368667 19.6097 0.551334 19.5385 0.769 19.5385H31.231C31.4487 19.5385 31.6313 19.6133 31.779 19.763C31.9263 19.9123 32 20.0975 32 20.3185C32 20.5395 31.9263 20.7212 31.779 20.8635C31.6313 21.0058 31.4487 21.077 31.231 21.077H0.769ZM0.769 11.3075C0.551334 11.3075 0.368667 11.2328 0.221 11.0835C0.0736666 10.9338 0 10.7485 0 10.5275C0 10.3065 0.0736666 10.1248 0.221 9.9825C0.368667 9.8405 0.551334 9.7695 0.769 9.7695H31.231C31.4487 9.7695 31.6313 9.84417 31.779 9.9935C31.9263 10.1432 32 10.3285 32 10.5495C32 10.7705 31.9263 10.9522 31.779 11.0945C31.6313 11.2365 31.4487 11.3075 31.231 11.3075H0.769ZM0.769 1.5385C0.551334 1.5385 0.368667 1.46367 0.221 1.314C0.0736666 1.16467 0 0.979502 0 0.758502C0 0.537502 0.0736666 0.355834 0.221 0.213501C0.368667 0.0711676 0.551334 0 0.769 0H31.231C31.4487 0 31.6313 0.0748329 31.779 0.2245C31.9263 0.373833 32 0.559002 32 0.780002C32 1.001 31.9263 1.18267 31.779 1.325C31.6313 1.46733 31.4487 1.5385 31.231 1.5385H0.769Z"
+                            fill="white" />
+                    </svg>
+                </button>
+            </div>
+            <div id="overlay_mobile_nav">
+                <ul id="menu_list_mobile">
+                    <li><a href="#about_me" class="nav-link" data-key="nav_about">About me</a></li>
+                    <li><a href="#skills" class="nav-link" data-key="nav_skills">Skills</a></li>
+                    <li><a href="#portfolio" class="nav-link" data-key="nav_projects">Projects</a></li>
+                </ul>
+                <div id="switch_container_mobile">
+                    <label class="switch">
+                        <input type="checkbox" id="lang-toggle-mobile">
+                        <span class="slider">
+                            <span class="text-en switch_text">EN</span>
+                            <span class="text-de switch_text">DE</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
         </header>
         <main>
             <section id="hero" class="container">
@@ -82,7 +107,8 @@
 
 
                     <a href="#">
-                        <svg id="mail_svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg id="mail_svg" width="32" height="32" viewBox="0 0 32 32" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_116436_2092)">
                                 <mask id="mask0_116436_2092" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
                                     y="0" width="32" height="32">

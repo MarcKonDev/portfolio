@@ -28,7 +28,8 @@ const projectsData = [
     }
 ]
 
-const langToggle = document.getElementById('lang-toggle');
+const langToggleDesktop = document.getElementById('lang-toggle-desktop');
+const langToggleMobile = document.getElementById('lang-toggle-mobile');
 const projPrev = document.querySelectorAll('.prev_projects');
 const overlay = document.getElementById('overlay_backdrop');
 const overlayInner = document.getElementById('project_overlay');
@@ -73,10 +74,21 @@ function updateStaticTexts() {
     });
 }
 
-langToggle.addEventListener('change', () => {
-    const language = langToggle.checked ? 'de' : 'en';
+function handleLanguageChange(event) {
+    const isChecked = event.target.checked;
+    const language = isChecked ? 'de' : 'en';
+    
     loadTranslations(language);
-});
+    
+    if (event.target === langToggleDesktop && langToggleMobile) {
+        langToggleMobile.checked = isChecked;
+    } else if (event.target === langToggleMobile && langToggleDesktop) {
+        langToggleDesktop.checked = isChecked;
+    }
+}
+
+langToggleDesktop?.addEventListener('change', handleLanguageChange);
+langToggleMobile?.addEventListener('change', handleLanguageChange);
 
 document.addEventListener("DOMContentLoaded", () => {
     loadTranslations('en');
@@ -287,3 +299,11 @@ function changeText(index) {
         }
     });
 }
+
+
+const mobileMenuBtnToggle = document.getElementById('mobile_nav');
+const mobileMenu = document.getElementById('overlay_mobile_nav');
+
+mobileMenuBtnToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('d_none');
+})
