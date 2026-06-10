@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Marc Dev - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="./img/fav.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -59,7 +60,7 @@
                     </svg>
                 </button>
             </div>
-            <div id="overlay_mobile_nav">
+            <div id="overlay_mobile_nav" class="d_none">
                 <ul id="menu_list_mobile">
                     <li><a href="#about_me" class="nav-link" data-key="nav_about">About me</a></li>
                     <li><a href="#skills" class="nav-link" data-key="nav_skills">Skills</a></li>
@@ -480,11 +481,9 @@
                     <div class="prev_projects" data-project="join">
                         <h3>Join</h3>
                         <div class="used_langs">
-                            <span>Angular</span>
-                            <span>TypeScript</span>
                             <span>HTML</span>
                             <span>CSS</span>
-                            <span>Firebase</span>
+                            <span>Javascript</span>
                         </div>
                     </div>
                     <div class="prev_projects" data-project="pollo">
@@ -495,14 +494,6 @@
                             <span>JavaScript</span>
                         </div>
                     </div>
-                    <div class="prev_projects" data-project="bubble">
-                        <h3>DA Bubble</h3>
-                        <div class="used_langs">
-                            <span>Angular</span>
-                            <span>Firebase</span>
-                            <span>TypeScript</span>
-                        </div>
-                    </div>
                 </div>
                 <div id="project_area">
                     <div id="img-join" class="img_container">
@@ -510,9 +501,6 @@
                     </div>
                     <div id="img-pollo" class="img_container">
                         <img class="prev_imgs" src="./img/el_pollo_loco.webp" alt="El Pollo Loco">
-                    </div>
-                    <div id="img-bubble" class="img_container">
-                        <img class="prev_imgs" src="./img/DABubble.webp" alt="DA Bubble">
                     </div>
                 </div>
                 <div id="overlay_backdrop" class="d_none">
@@ -730,7 +718,7 @@
                         </div>
                         <div class="form_container">
                             <label for="email" data-key="contact_your_email">What's your email?</label>
-                            <input type="text" id="email" data-key="placeholder_email" placeholder="youremail@email.com"
+                            <input type="email" id="email" data-key="placeholder_email" placeholder="youremail@email.com"
                                 required>
                             <span class="error-message error-empty" data-key="error_email">Hoppla! Your email is
                                 required</span>
@@ -794,7 +782,7 @@
             <div id="footer_text_area">
                 <p>© Marc Dev 2026</p>
             </div>
-            <div>
+            <div id="footer_list_wrapper">
                 <ul id="footer_list">
                     <li><a target="_blank" href="https://github.com/MarcKonDev">Github</a></li>
                     <li><a target="_blank" href="https://de.linkedin.com/">LinkedIn</a></li>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
+    <title>Legal Notice</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./privacy_policy.css">
 </head>
@@ -14,7 +14,7 @@
         <nav id="container_header" class="container">
             <div id="switch_container">
                 <label class="switch">
-                    <input type="checkbox" id="lang-toggle">
+                    <input type="checkbox" id="lang-toggle-desktop">
                     <span class="slider">
                         <span class="text-en switch_text">EN</span>
                         <span class="text-de switch_text">DE</span>
@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <a href="index.html" class="logo-link" aria-label="Zur Startseite">
-                        <svg class="logo-svg" width="133" height="48" viewBox="0 0 133 48" fill="none"
+                        <svg class="logo-svg" width="78" height="48" viewBox="0 0 78 48" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
 
                             <path class="logo-icon" fill-rule="evenodd" clip-rule="evenodd"
@@ -50,13 +50,38 @@
                 </div>
             </div>
         </nav>
+        <div id="mobile_nav">
+            <button>
+                <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0.769 21.077C0.551334 21.077 0.368667 21.0022 0.221 20.8525C0.0736666 20.7032 0 20.518 0 20.297C0 20.076 0.0736666 19.8943 0.221 19.752C0.368667 19.6097 0.551334 19.5385 0.769 19.5385H31.231C31.4487 19.5385 31.6313 19.6133 31.779 19.763C31.9263 19.9123 32 20.0975 32 20.3185C32 20.5395 31.9263 20.7212 31.779 20.8635C31.6313 21.0058 31.4487 21.077 31.231 21.077H0.769ZM0.769 11.3075C0.551334 11.3075 0.368667 11.2328 0.221 11.0835C0.0736666 10.9338 0 10.7485 0 10.5275C0 10.3065 0.0736666 10.1248 0.221 9.9825C0.368667 9.8405 0.551334 9.7695 0.769 9.7695H31.231C31.4487 9.7695 31.6313 9.84417 31.779 9.9935C31.9263 10.1432 32 10.3285 32 10.5495C32 10.7705 31.9263 10.9522 31.779 11.0945C31.6313 11.2365 31.4487 11.3075 31.231 11.3075H0.769ZM0.769 1.5385C0.551334 1.5385 0.368667 1.46367 0.221 1.314C0.0736666 1.16467 0 0.979502 0 0.758502C0 0.537502 0.0736666 0.355834 0.221 0.213501C0.368667 0.0711676 0.551334 0 0.769 0H31.231C31.4487 0 31.6313 0.0748329 31.779 0.2245C31.9263 0.373833 32 0.559002 32 0.780002C32 1.001 31.9263 1.18267 31.779 1.325C31.6313 1.46733 31.4487 1.5385 31.231 1.5385H0.769Z"
+                        fill="white" />
+                </svg>
+            </button>
+        </div>
+        <div id="overlay_mobile_nav" class="d_none">
+            <ul id="menu_list_mobile">
+                <li><a href="./index.html#about_me" class="nav-link" data-key="nav_about">About me</a></li>
+                <li><a href="./index.html#skills" class="nav-link" data-key="nav_skills">Skills</a></li>
+                <li><a href="./index.html#portfolio" class="nav-link" data-key="nav_projects">Projects</a></li>
+            </ul>
+            <div id="switch_container_mobile">
+                <label class="switch">
+                    <input type="checkbox" id="lang-toggle-mobile">
+                    <span class="slider">
+                        <span class="text-en switch_text">EN</span>
+                        <span class="text-de switch_text">DE</span>
+                    </span>
+                </label>
+            </div>
+        </div>
     </header>
     <div class="container_content_limit" id="limit">
-        <h1 class="legal_notice_title">Privacy Policy</h1>
+        <h1 class="legal_notice_title" data-key="ln_title_pp">Privacy Policy</h1>
         <div class="legal_notice_content">
             <section class="legal_notice_block">
-                <h2>1. Controller</h2>
-                <p>The controller responsible for data processing on this website is:</p>
+                <h2 data-key="ln_sec1_h">1. Controller</h2>
+                <p data-key="ln_sec1_p">The controller responsible for data processing on this website is:</p>
                 <ul>
                     <li>Marc Mustermann</li>
                     <li>Musterstraße 1</li>
@@ -66,31 +91,31 @@
                 </ul>
             </section>
             <section class="legal_notice_block">
-                <h2>2. General information</h2>
-                <p>This privacy policy explains which personal data is processed when you visit this portfolio website
+                <h2 data-key="ln_sec2_h">2. General information</h2>
+                <p data-key="ln_sec2_p">This privacy policy explains which personal data is processed when you visit this portfolio website
                     or
                     contact me via the contact form. Personal data means any information that can be used to identify
                     you
                     personally, for example your name, email address or message content.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>3. Server log files and hosting</h2>
-                <p>When you visit this website, technically necessary access data may be processed automatically by the
+                <h2 data-key="ln_sec3_h">3. Server log files and hosting</h2>
+                <p data-key="ln_sec3_p1">When you visit this website, technically necessary access data may be processed automatically by the
                     hosting provider. This can include the requested page or file, date and time of access, browser type
                     and
                     version, operating system, referrer URL and IP address.</p>
-                <p>The processing is necessary to deliver the website, maintain technical stability and ensure security.
+                <p data-key="ln_sec3_p2">The processing is necessary to deliver the website, maintain technical stability and ensure security.
                     The
                     legal basis is Art. 6(1)(f) GDPR. The concrete retention period depends on the hosting provider used
                     and
                     should be adjusted after deployment.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>4. Contact form</h2>
-                <p>If you use the contact form, the data entered there is processed. This currently includes your name,
+                <h2 data-key="ln_sec4_h">4. Contact form</h2>
+                <p data-key="ln_sec4_p1">If you use the contact form, the data entered there is processed. This currently includes your name,
                     email address and message. The data is used only to answer your request and to communicate with you.
                 </p>
-                <p>The legal basis is your consent pursuant to Art. 6(1)(a) GDPR. You can withdraw your consent at any
+                <p data-key="ln_sec4_p2">The legal basis is your consent pursuant to Art. 6(1)(a) GDPR. You can withdraw your consent at any
                     time
                     with effect for the future by sending an email to <a
                         href="mailto:marc.dev@web.de">marc.dev@web.de</a>.
@@ -98,53 +123,53 @@
                     legality of processing carried out before withdrawal remains unaffected.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>5. Email contact</h2>
-                <p>If you contact me by email, your email address and the content of your message are processed so that
+                <h2 data-key="ln_sec5_h">5. Email contact</h2>
+                <p data-key="ln_sec5_p">If you contact me by email, your email address and the content of your message are processed so that
                     I
                     can respond to your request. The legal basis is Art. 6(1)(f) GDPR. If your request relates to
                     pre-contractual measures, Art. 6(1)(b) GDPR may also apply.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>6. Cookies, analytics and external services</h2>
-                <p>This portfolio website does not intentionally use tracking cookies, analytics tools or advertising
+                <h2 data-key="ln_sec6_h">6. Cookies, analytics and external services</h2>
+                <p data-key="ln_sec6_p">This portfolio website does not intentionally use tracking cookies, analytics tools or advertising
                     services. Fonts, images, styles and scripts are intended to be loaded locally from this website. If
                     external services, analytics tools or embedded content are added later, this privacy policy must be
                     updated accordingly.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>7. Recipients of data</h2>
-                <p>Your data is not sold or shared for advertising purposes. Data may be processed by technical service
+                <h2 data-key="ln_sec7_h">7. Recipients of data</h2>
+                <p data-key="ln_sec7_p">Your data is not sold or shared for advertising purposes. Data may be processed by technical service
                     providers, especially hosting and email service providers, where this is necessary to operate the
                     website and handle your request.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>8. Storage period</h2>
-                <p>Contact requests are stored only for as long as necessary to process the request, unless statutory
+                <h2 data-key="ln_sec8_h">8. Storage period</h2>
+                <p data-key="ln_sec8_p">Contact requests are stored only for as long as necessary to process the request, unless statutory
                     retention obligations apply. Server log files are stored only for as long as technically necessary
                     or as
                     specified by the hosting provider.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>9. Your rights</h2>
-                <p>You have the right to request access to your personal data, rectification, erasure, restriction of
+                <h2 data-key="ln_sec9_h">9. Your rights</h2>
+                <p data-key="ln_sec9_p1">You have the right to request access to your personal data, rectification, erasure, restriction of
                     processing, data portability and objection to processing. If processing is based on consent, you
                     also
                     have the right to withdraw your consent at any time with effect for the future.</p>
-                <p>You also have the right to lodge a complaint with a competent data protection supervisory authority.
+                <p data-key="ln_sec9_p2">You also have the right to lodge a complaint with a competent data protection supervisory authority.
                 </p>
             </section>
             <section class="legal_notice_block">
-                <h2>10. SSL/TLS encryption</h2>
-                <p>This website should be delivered via HTTPS after deployment. HTTPS protects data transmitted between
+                <h2 data-key="ln_sec10_h">10. SSL/TLS encryption</h2>
+                <p data-key="ln_sec10_p">This website should be delivered via HTTPS after deployment. HTTPS protects data transmitted between
                     your
                     browser and the website against unauthorized access as far as technically possible.</p>
             </section>
             <section class="legal_notice_block">
-                <h2>11. Updates to this privacy policy</h2>
-                <p>This privacy policy may be updated if the website, hosting setup, contact form, external services or
+                <h2 data-key="ln_sec11_h">11. Updates to this privacy policy</h2>
+                <p data-key="ln_sec11_p">This privacy policy may be updated if the website, hosting setup, contact form, external services or
                     legal requirements change.</p>
             </section>
-            <p class="legal_notice_date">Date: May 2026</p>
+            <p class="legal_notice_date" data-key="ln_date">Date: May 2026</p>
         </div>
     </div>
     <footer>
@@ -172,7 +197,7 @@
             <div id="footer_text_area">
                 <p>© Likas Müller 2025</p>
             </div>
-            <div>
+            <div id="footer_list_wrapper">
                 <ul id="footer_list">
                     <li><a target="_blank" href="https://github.com/MarcKonDev">Github</a></li>
                     <li><a target="_blank" href="https://de.linkedin.com/">LinkedIn</a></li>
@@ -182,6 +207,7 @@
             </div>
         </div>
     </footer>
+    <script src="./script.js"></script>
 </body>
 
 </html>

@@ -4,26 +4,17 @@ const projectsData = [
         title: "Join",
         descKey: "project_01_desc",
         image: "./img/Join.webp",
-        github: "https://github.com/MarcKonDev",
+        github: "https://github.com/MarcKonDev/Join-fertig",
         live: "https://marckondev.github.io/Join-fertig/",
-        langs: ['lang_css', 'lang_html', 'lang_firebase', 'lang_angular', 'lang_typescript']
+        langs: ['lang_css', 'lang_html', 'lang_javascript']
     },
     {
         number: "02",
         title: "El Pollo Loco",
         descKey: "project_02_desc",
         image: "./img/el_pollo_loco.webp",
-        github: "https://github.com/MarcKonDev",
+        github: "https://github.com/MarcKonDev/El_Pollo_Loco",
         live: "https://marckondev.github.io/El_Pollo_Loco/",
-        langs: ['lang_css', 'lang_html', 'lang_javascript']
-    },
-    {
-        number: "03",
-        title: "DA Bubble",
-        descKey: "project_03_desc",
-        image: "./img/DABubble.webp",
-        github: "https://github.com/MarcKonDev",
-        live: "#",
         langs: ['lang_css', 'lang_html', 'lang_javascript']
     }
 ]
@@ -77,9 +68,9 @@ function updateStaticTexts() {
 function handleLanguageChange(event) {
     const isChecked = event.target.checked;
     const language = isChecked ? 'de' : 'en';
-    
+    localStorage.setItem('preferredLanguage', language);
     loadTranslations(language);
-    
+
     if (event.target === langToggleDesktop && langToggleMobile) {
         langToggleMobile.checked = isChecked;
     } else if (event.target === langToggleMobile && langToggleDesktop) {
@@ -91,8 +82,11 @@ langToggleDesktop?.addEventListener('change', handleLanguageChange);
 langToggleMobile?.addEventListener('change', handleLanguageChange);
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadTranslations('en');
-
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    loadTranslations(savedLanguage);
+    const isGerman = savedLanguage === 'de';
+    if (langToggleDesktop) langToggleDesktop.checked = isGerman;
+    if (langToggleMobile) langToggleMobile.checked = isGerman;
     setupScrollButtons();
     setupFormValidation();
 });
@@ -101,7 +95,7 @@ function setupScrollButtons() {
     const toPortfolioBtn = document.querySelector('#check_work_btn');
     const toContactBtn = document.querySelector('#contact_btn');
     const skillsetBtn = document.querySelector('#skillset_btn');
-
+    if (!toPortfolioBtn || !toContactBtn || !skillsetBtn) return;
     toPortfolioBtn?.addEventListener('click', () => {
         document.querySelector('#portfolio')?.scrollIntoView({ behavior: "smooth" });
     });
@@ -120,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.querySelector(".next_btn");
     const prevBtn = document.querySelector(".prev_btn");
     const dots = document.querySelectorAll(".dot");
-
+    if (!container || !nextBtn || !prevBtn) return;
     let currentDotIndex = 1;
 
     function updateDots() {
@@ -181,30 +175,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setupFormValidation() {
     const form = document.getElementById('contact_form');
-    if (!form) return;
+    const submitBtn = document.getElementById('form_btn');
+    if (!form || !submitBtn) return;
 
     const inputs = form.querySelectorAll('input[required]');
 
+    // Funktion zur Überprüfung des gesamten Formulars (ohne direkt Fehler anzuzeigen)
+    function checkFormValidity() {
+        let isFormValid = true;
+        inputs.forEach(input => {
+            // Wir prüfen nur den Zustand, übergeben aber 'false', damit nicht beim Tippen alles rot wird
+            if (!validateInput(input, false)) {
+                isFormValid = false;
+            }
+        });
+        submitBtn.disabled = !isFormValid;
+    }
+
     inputs.forEach(input => {
+        // Beim Verlassen des Feldes (blur) validieren UND Fehler anzeigen (true)
         input.addEventListener('blur', () => {
-            validateInput(input);
+            validateInput(input, true);
         });
 
+        // Beim Tippen/Ändern Fehler live entfernen und Button-Status prüfen
         input.addEventListener('input', () => {
             if (input.id === 'email') {
                 input.parentElement.classList.remove('invalid', 'invalid_format');
             } else {
                 input.parentElement.classList.remove('invalid');
             }
+            checkFormValidity();
+        });
+
+        // Wichtig für die Checkbox (reagiert besser auf 'change')
+        input.addEventListener('change', () => {
+            if (input.type === 'checkbox' && input.checked) {
+                input.parentElement.classList.remove('invalid');
+            }
+            checkFormValidity();
         });
     });
 
+    // Sicherheitshalber beim Absenden nochmals alles checken
     form.addEventListener('submit', (event) => {
         let isFormValid = true;
-
         inputs.forEach(input => {
-            const isValid = validateInput(input);
-            if (!isValid) {
+            if (!validateInput(input, true)) {
                 isFormValid = false;
             }
         });
@@ -213,76 +230,87 @@ function setupFormValidation() {
             event.preventDefault();
         }
     });
+
+    // Direkt beim Laden der Seite die erste Prüfung ausführen (sperrt den Button)
+    checkFormValidity();
 }
 
-function validateInput(input) {
+
+function validateInput(input, showErrors = true) {
     const parent = input.parentElement;
+    let isValid = false;
 
     if (input.type === 'checkbox') {
-        if (!input.checked) {
-            parent.classList.add('invalid');
-            return false;
-        } else {
-            parent.classList.remove('invalid');
-            return true;
+        isValid = input.checked;
+        if (showErrors) {
+            if (!isValid) parent.classList.add('invalid');
+            else parent.classList.remove('invalid');
         }
     } else if (input.id === 'email') {
         const emailValue = input.value.trim();
-        // Ein Standard-Regex für gültige E-Mail-Adressen
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{3,}\.[a-zA-Z]{2,}$/;
 
         if (emailValue === '') {
-            parent.classList.add('invalid');
-            return false;
+            if (showErrors) parent.classList.add('invalid');
+            isValid = false;
         } else if (!emailPattern.test(emailValue)) {
-            parent.classList.add('invalid_format');
-            return false;
+            if (showErrors) parent.classList.add('invalid_format');
+            isValid = false;
         } else {
-            parent.classList.remove('invalid', 'invalid_format');
-            return true;
+            if (showErrors) parent.classList.remove('invalid', 'invalid_format');
+            isValid = true;
         }
     } else {
-        if (input.value.trim() === '') {
-            parent.classList.add('invalid');
-            return false;
-        } else {
-            parent.classList.remove('invalid');
-            return true;
+        isValid = input.value.trim() !== '';
+        if (showErrors) {
+            if (!isValid) parent.classList.add('invalid');
+            else parent.classList.remove('invalid');
         }
     }
+
+    return isValid;
 }
 
-projectNextBtn.addEventListener('click', () => {
+projectNextBtn?.addEventListener('click', () => {
     currentProjectIndex = (currentProjectIndex + 1) % projectsData.length;
     changeText(currentProjectIndex);
 });
 
-projPrev.forEach((project, index) => {
-    project.addEventListener('click', () => {
-        overlay.classList.remove('d_none');
-        document.body.classList.add('no-scroll');
-        changeText(index);
-    })
-})
+if (projPrev && projPrev.length > 0) {
+    projPrev.forEach((project, index) => {
+        project.addEventListener('click', () => {
+            overlay?.classList.remove('d_none');
+            document.body.classList.add('no-scroll');
+            changeText(index);
+        });
+    });
+}
 
-closeOverlayBtn.addEventListener('click', () => {
-    overlay.classList.add('d_none');
+closeOverlayBtn?.addEventListener('click', () => {
+    overlay?.classList.add('d_none');
     document.body.classList.remove('no-scroll');
 });
 
-overlay.addEventListener('click', (event) => {
-    if (event.target === overlay) {
-        overlay.classList.add('d_none');
-        document.body.classList.remove('no-scroll');
-    }
-});
+if (overlay) {
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            overlay.classList.add('d_none');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+}
 
 function changeText(index) {
+
+    if (!projectNumber || !projectName || !projectImage || !projectDescription) {
+        return;
+    }
+
     currentProjectIndex = index;
     const project = projectsData[index];
     projectNumber.innerHTML = projectsData[index].number;
     projectName.innerHTML = projectsData[index].title;
-   
+
     projectImage.src = projectsData[index].image;
     projectGithub.href = projectsData[index].github;
     projectLive.href = projectsData[index].live;
@@ -303,7 +331,14 @@ function changeText(index) {
 
 const mobileMenuBtnToggle = document.getElementById('mobile_nav');
 const mobileMenu = document.getElementById('overlay_mobile_nav');
+const navLinks = document.querySelectorAll('.nav-link')
 
-mobileMenuBtnToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('d_none');
+mobileMenuBtnToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('d_none');
 })
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu?.classList.add('d_none');
+    });
+});

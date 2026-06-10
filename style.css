@@ -1298,6 +1298,12 @@ input::placeholder {
     color: var(--primary-text);
 }
 
+#form_btn:disabled {
+    opacity: 0.5;            /* Macht den Button blasser */
+    cursor: not-allowed;     /* Ändert den Mauszeiger in ein "Verboten"-Schild */
+    pointer-events: none;    /* Verhindert Hover-Effekte und Animationen */
+}
+
 /* #endregion */
 
 /* #region footer*/
@@ -1895,5 +1901,30 @@ html {
         background-color: transparent;
         border: none;
         cursor: pointer;
+    }
+
+    #footer_container {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px 0px; 
+    }
+
+    #footer_img_area {
+        max-width: 50%; 
+        order: 1; 
+    }
+
+    #footer_list_wrapper {
+        order: 2; 
+        align-items: flex-end; 
+    }
+
+    #footer_text_area {
+        order: 3; 
+        width: 100%; 
+        text-align: center;
+        margin-top: 20px;  
     }
 }

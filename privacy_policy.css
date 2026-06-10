@@ -1,3 +1,22 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.container_content_limit {
+    flex: 1 0 auto; 
+}
+
+footer {
+    flex-shrink: 0;
+}
+
 #limit{
     padding: 0 96px;
     margin-top: 40px;
@@ -41,4 +60,18 @@ a{
 
 #footer_list a, #menu_list a{
     color: var(--primary-text);
+}
+
+@media (max-width: 750px) {
+    #limit{
+        padding: 0px;
+    }
+
+    .legal_notice_title{
+        font-size: 32px;
+    }
+
+    .container_content_limit {
+        margin-left: 8px;
+        margin-right: 8px;}
 }
