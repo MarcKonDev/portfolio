@@ -635,13 +635,13 @@
     <div class="container_content_limit">
         <section id="references">
             <h3 data-key="what_my">What my colleagues say about me</h3>
-            <svg id="quote_icon" width="90" height="64" viewBox="0 0 90 64" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M64.9662 64C60.8438 64 57.1852 62.9179 53.9903 60.7536C50.7955 58.5894 48.2705 55.6522 46.4155 51.942C44.5604 48.2319 43.6329 44.1095 43.6329 39.5749C43.6329 32.1546 46.0548 24.8889 50.8986 17.7778C55.8454 10.5636 62.8019 4.63769 71.7681 0L89.0821 9.27537C83.2077 12.161 78.2093 15.5105 74.087 19.3237C70.0676 23.1369 67.3366 27.62 65.8937 32.7729C70.7375 33.1852 74.6538 34.6796 77.6425 37.256C80.7343 39.7295 82.2802 43.182 82.2802 47.6135C82.2802 52.0451 80.6828 55.9098 77.4879 59.2077C74.3961 62.4026 70.2222 64 64.9662 64ZM21.3333 64C17.2109 64 13.5523 62.9179 10.3575 60.7536C7.16264 58.5894 4.63768 55.6522 2.78261 51.942C0.927537 48.2319 0 44.1095 0 39.5749C0 32.1546 2.4219 24.8889 7.2657 17.7778C12.2126 10.5636 19.1691 4.63769 28.1353 0L45.4493 9.27537C39.5749 12.161 34.5765 15.5105 30.4541 19.3237C26.4348 23.1369 23.7037 27.62 22.2609 32.7729C27.1047 33.1852 31.0209 34.6796 34.0097 37.256C37.1015 39.7295 38.6473 43.182 38.6473 47.6135C38.6473 52.0451 37.0499 55.9098 33.8551 59.2077C30.7633 62.4026 26.5894 64 21.3333 64Z"
-                    fill="white" />
-            </svg>
             <div class="testimonial_container">
+                <svg class="quote_icon" width="90" height="64" viewBox="0 0 90 64" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M64.9662 64C60.8438 64 57.1852 62.9179 53.9903 60.7536C50.7955 58.5894 48.2705 55.6522 46.4155 51.942C44.5604 48.2319 43.6329 44.1095 43.6329 39.5749C43.6329 32.1546 46.0548 24.8889 50.8986 17.7778C55.8454 10.5636 62.8019 4.63769 71.7681 0L89.0821 9.27537C83.2077 12.161 78.2093 15.5105 74.087 19.3237C70.0676 23.1369 67.3366 27.62 65.8937 32.7729C70.7375 33.1852 74.6538 34.6796 77.6425 37.256C80.7343 39.7295 82.2802 43.182 82.2802 47.6135C82.2802 52.0451 80.6828 55.9098 77.4879 59.2077C74.3961 62.4026 70.2222 64 64.9662 64ZM21.3333 64C17.2109 64 13.5523 62.9179 10.3575 60.7536C7.16264 58.5894 4.63768 55.6522 2.78261 51.942C0.927537 48.2319 0 44.1095 0 39.5749C0 32.1546 2.4219 24.8889 7.2657 17.7778C12.2126 10.5636 19.1691 4.63769 28.1353 0L45.4493 9.27537C39.5749 12.161 34.5765 15.5105 30.4541 19.3237C26.4348 23.1369 23.7037 27.62 22.2609 32.7729C27.1047 33.1852 31.0209 34.6796 34.0097 37.256C37.1015 39.7295 38.6473 43.182 38.6473 47.6135C38.6473 52.0451 37.0499 55.9098 33.8551 59.2077C30.7633 62.4026 26.5894 64 21.3333 64Z"
+                        fill="white" />
+                </svg>
                 <article class="testimonials">
                     <p data-key="janisch">
                         Lukas has proven to be a reliable group partner. His technical skills and proactive
@@ -708,18 +708,18 @@
                             Let's talk!</span></p>
                 </div>
                 <div>
-                    <form action="" id="contact_form" novalidate>
+                    <form action="sendmail.php" method="POST" id="contact_form" novalidate>
                         <div class="form_container">
                             <label for="name" data-key="contact_your_name">What's your name?</label>
-                            <input type="text" id="name" data-key="placeholder_name" placeholder="Your name goes here"
-                                required>
+                            <input type="text" id="name" name="name" data-key="placeholder_name"
+                                placeholder="Your name goes here" required>
                             <span class="error-message" data-key="error_name">Oops! It seems your name is
                                 missing</span>
                         </div>
                         <div class="form_container">
                             <label for="email" data-key="contact_your_email">What's your email?</label>
-                            <input type="email" id="email" data-key="placeholder_email" placeholder="youremail@email.com"
-                                required>
+                            <input type="email" id="email" name="email" data-key="placeholder_email"
+                                placeholder="youremail@email.com" required>
                             <span class="error-message error-empty" data-key="error_email">Hoppla! Your email is
                                 required</span>
                             <span class="error-message error-invalid" data-key="error_email_invalid">Please
@@ -728,7 +728,7 @@
                         </div>
                         <div class="form_container">
                             <label for="question" data-key="contact_help">How can I help you?</label>
-                            <input type="text" id="question" data-key="placeholder_question"
+                            <input type="text" id="question" name="message" data-key="placeholder_question"
                                 placeholder="Hello Lukas, I am interested in.." required>
                             <span class="error-message" data-key="error_question">What do you need to
                                 develop?</span>
@@ -745,12 +745,16 @@
                             <span class="error-message" data-key="error_privacy">Please accept the privacy
                                 policy.</span>
                         </div>
+
                         <button id="form_btn">
                             <div id="submit_btn">
                                 <span data-key="say_hello">Say Hello ;&#41;</span>
                                 <span data-key="say_hello">Say Hello ;&#41;</span>
                             </div>
                         </button>
+                        <p id="form_message" class="form_message d_none" data-key="thanks_msg">
+                            Thank you! Your message has been sent.
+                        </p>
                     </form>
                 </div>
             </div>

@@ -36,6 +36,13 @@ const allLangElements = document.querySelectorAll('.overlay_langs');
 let currentTranslations = {};
 let currentProjectIndex = 0;
 
+// Testimonial-Slider: gemeinsam genutzte Elemente und Zustand
+const container = document.querySelector(".testimonial_container");
+const nextBtn = document.querySelector(".next_btn");
+const prevBtn = document.querySelector(".prev_btn");
+const dots = document.querySelectorAll(".dot");
+let currentDotIndex = 1;
+
 
 async function loadTranslations(lang) {
     try {
@@ -91,183 +98,199 @@ document.addEventListener("DOMContentLoaded", () => {
     setupFormValidation();
 });
 
+// Scrollt sanft zum Abschnitt mit dem übergebenen Selektor
+function scrollToSection(selector) {
+    document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
+}
+
 function setupScrollButtons() {
     const toPortfolioBtn = document.querySelector('#check_work_btn');
     const toContactBtn = document.querySelector('#contact_btn');
     const skillsetBtn = document.querySelector('#skillset_btn');
     if (!toPortfolioBtn || !toContactBtn || !skillsetBtn) return;
-    toPortfolioBtn?.addEventListener('click', () => {
-        document.querySelector('#portfolio')?.scrollIntoView({ behavior: "smooth" });
-    });
+    toPortfolioBtn.addEventListener('click', () => scrollToSection('#portfolio'));
+    toContactBtn.addEventListener('click', () => scrollToSection('#contact_me'));
+    skillsetBtn.addEventListener('click', () => scrollToSection('#contact_me'));
+}
 
-    toContactBtn?.addEventListener('click', () => {
-        document.querySelector('#contact_me')?.scrollIntoView({ behavior: "smooth" });
-    });
-
-    skillsetBtn?.addEventListener('click', () => {
-        document.querySelector('#contact_me')?.scrollIntoView({ behavior: "smooth" });
+// Markiert den aktuell aktiven Punkt unter dem Slider
+function updateDots() {
+    dots.forEach((dot, i) => {
+        if (i === currentDotIndex) {
+            dot.classList.add("active");
+        } else {
+            dot.classList.remove("active");
+        }
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector(".testimonial_container");
-    const nextBtn = document.querySelector(".next_btn");
-    const prevBtn = document.querySelector(".prev_btn");
-    const dots = document.querySelectorAll(".dot");
-    if (!container || !nextBtn || !prevBtn) return;
-    let currentDotIndex = 1;
-
-    function updateDots() {
-        dots.forEach((dot, i) => {
-            if (i === currentDotIndex) {
-                dot.classList.add("active");
-            } else {
-                dot.classList.remove("active");
-            }
-        });
-    }
-
-    nextBtn.addEventListener("click", () => {
-        const firstCard = container.querySelector(".testimonials");
-
-        container.appendChild(firstCard);
-
-        currentDotIndex = (currentDotIndex + 1) % dots.length;
-        updateDots();
-    });
-
-    prevBtn.addEventListener("click", () => {
-        const allCards = container.querySelectorAll(".testimonials");
-        const lastCard = allCards[allCards.length - 1];
-
-        container.insertBefore(lastCard, allCards[0]);
-
-        currentDotIndex = (currentDotIndex - 1 + dots.length) % dots.length;
-        updateDots();
-    });
-
+// Schiebt die erste Karte nach hinten (vorwärts blättern)
+function showNextTestimonial() {
+    const firstCard = container.querySelector(".testimonials");
+    container.appendChild(firstCard);
+    currentDotIndex = (currentDotIndex + 1) % dots.length;
     updateDots();
-});
+}
 
-document.addEventListener("DOMContentLoaded", () => {
+// Schiebt die letzte Karte nach vorne (rückwärts blättern)
+function showPrevTestimonial() {
+    const allCards = container.querySelectorAll(".testimonials");
+    const lastCard = allCards[allCards.length - 1];
+    container.insertBefore(lastCard, allCards[0]);
+    currentDotIndex = (currentDotIndex - 1 + dots.length) % dots.length;
+    updateDots();
+}
+
+function setupTestimonials() {
+    if (!container || !nextBtn || !prevBtn) return;
+    nextBtn.addEventListener("click", showNextTestimonial);
+    prevBtn.addEventListener("click", showPrevTestimonial);
+    updateDots();
+}
+
+document.addEventListener("DOMContentLoaded", setupTestimonials);
+
+// Zeigt/versteckt das Vorschaubild zu einer Projektzeile
+function toggleProjectImage(row, show) {
+    const projectName = row.getAttribute('data-project');
+    const targetImg = document.getElementById(`img-${projectName}`);
+    if (!targetImg) return;
+    if (show) targetImg.classList.add('active');
+    else targetImg.classList.remove('active');
+}
+
+function setupProjectHover() {
     const projectRows = document.querySelectorAll('.prev_projects');
-
     projectRows.forEach(row => {
-        row.addEventListener('mouseenter', () => {
-            const projectName = row.getAttribute('data-project');
-            const targetImg = document.getElementById(`img-${projectName}`);
-
-            if (targetImg) {
-                targetImg.classList.add('active');
-            }
-        });
-
-        row.addEventListener('mouseleave', () => {
-            const projectName = row.getAttribute('data-project');
-            const targetImg = document.getElementById(`img-${projectName}`);
-
-            if (targetImg) {
-                targetImg.classList.remove('active');
-            }
-        });
+        row.addEventListener('mouseenter', () => toggleProjectImage(row, true));
+        row.addEventListener('mouseleave', () => toggleProjectImage(row, false));
     });
-});
+}
+
+document.addEventListener("DOMContentLoaded", setupProjectHover);
 
 function setupFormValidation() {
     const form = document.getElementById('contact_form');
     const submitBtn = document.getElementById('form_btn');
     if (!form || !submitBtn) return;
-
     const inputs = form.querySelectorAll('input[required]');
-
-    // Funktion zur Überprüfung des gesamten Formulars (ohne direkt Fehler anzuzeigen)
-    function checkFormValidity() {
-        let isFormValid = true;
-        inputs.forEach(input => {
-            // Wir prüfen nur den Zustand, übergeben aber 'false', damit nicht beim Tippen alles rot wird
-            if (!validateInput(input, false)) {
-                isFormValid = false;
-            }
-        });
-        submitBtn.disabled = !isFormValid;
-    }
-
-    inputs.forEach(input => {
-        // Beim Verlassen des Feldes (blur) validieren UND Fehler anzeigen (true)
-        input.addEventListener('blur', () => {
-            validateInput(input, true);
-        });
-
-        // Beim Tippen/Ändern Fehler live entfernen und Button-Status prüfen
-        input.addEventListener('input', () => {
-            if (input.id === 'email') {
-                input.parentElement.classList.remove('invalid', 'invalid_format');
-            } else {
-                input.parentElement.classList.remove('invalid');
-            }
-            checkFormValidity();
-        });
-
-        // Wichtig für die Checkbox (reagiert besser auf 'change')
-        input.addEventListener('change', () => {
-            if (input.type === 'checkbox' && input.checked) {
-                input.parentElement.classList.remove('invalid');
-            }
-            checkFormValidity();
-        });
-    });
-
-    // Sicherheitshalber beim Absenden nochmals alles checken
-    form.addEventListener('submit', (event) => {
-        let isFormValid = true;
-        inputs.forEach(input => {
-            if (!validateInput(input, true)) {
-                isFormValid = false;
-            }
-        });
-
-        if (!isFormValid) {
-            event.preventDefault();
-        }
-    });
-
-    // Direkt beim Laden der Seite die erste Prüfung ausführen (sperrt den Button)
-    checkFormValidity();
+    inputs.forEach(input => addInputListeners(input, inputs, submitBtn));
+    form.addEventListener('submit', (event) => handleFormSubmit(event, inputs));
+    checkFormValidity(inputs, submitBtn);
 }
 
-
-function validateInput(input, showErrors = true) {
-    const parent = input.parentElement;
-    let isValid = false;
-
-    if (input.type === 'checkbox') {
-        isValid = input.checked;
-        if (showErrors) {
-            if (!isValid) parent.classList.add('invalid');
-            else parent.classList.remove('invalid');
+// Prüft das gesamte Formular und sperrt/entsperrt den Button
+function checkFormValidity(inputs, submitBtn) {
+    let isFormValid = true;
+    inputs.forEach(input => {
+        if (!validateInput(input, false)) {
+            isFormValid = false;
         }
-    } else if (input.id === 'email') {
-        const emailValue = input.value.trim();
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{3,}\.[a-zA-Z]{2,}$/;
+    });
+    submitBtn.disabled = !isFormValid;
+}
 
-        if (emailValue === '') {
-            if (showErrors) parent.classList.add('invalid');
-            isValid = false;
-        } else if (!emailPattern.test(emailValue)) {
-            if (showErrors) parent.classList.add('invalid_format');
-            isValid = false;
-        } else {
-            if (showErrors) parent.classList.remove('invalid', 'invalid_format');
-            isValid = true;
-        }
+// Hängt die drei Listener an ein einzelnes Eingabefeld
+function addInputListeners(input, inputs, submitBtn) {
+    input.addEventListener('blur', () => validateInput(input, true));
+    input.addEventListener('input', () => handleInputTyping(input, inputs, submitBtn));
+    input.addEventListener('change', () => handleCheckboxChange(input, inputs, submitBtn));
+}
+
+// Beim Tippen Fehler live entfernen und Button-Status prüfen
+function handleInputTyping(input, inputs, submitBtn) {
+    if (input.id === 'email') {
+        input.parentElement.classList.remove('invalid', 'invalid_format');
     } else {
-        isValid = input.value.trim() !== '';
-        if (showErrors) {
-            if (!isValid) parent.classList.add('invalid');
-            else parent.classList.remove('invalid');
-        }
+        input.parentElement.classList.remove('invalid');
     }
+    checkFormValidity(inputs, submitBtn);
+}
 
+// Wichtig für die Checkbox (reagiert besser auf 'change')
+function handleCheckboxChange(input, inputs, submitBtn) {
+    if (input.type === 'checkbox' && input.checked) {
+        input.parentElement.classList.remove('invalid');
+    }
+    checkFormValidity(inputs, submitBtn);
+}
+
+// Beim Absenden alles prüfen; wenn gültig, per fetch verschicken
+function handleFormSubmit(event, inputs) {
+    event.preventDefault();
+    let isFormValid = true;
+    inputs.forEach(input => {
+        if (!validateInput(input, true)) {
+            isFormValid = false;
+        }
+    });
+    if (isFormValid) sendForm(event.target);
+}
+
+// Schickt die Formulardaten an sendmail.php (ohne Seitenreload)
+async function sendForm(form) {
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) showFormSuccess(form);
+        else alert('Senden fehlgeschlagen. Bitte versuche es erneut.');
+    } catch (error) {
+        alert('Verbindung fehlgeschlagen. Bitte versuche es erneut.');
+    }
+}
+
+// Leert das Formular und zeigt die Erfolgsmeldung
+function showFormSuccess(form) {
+    form.reset();
+    const btn = document.getElementById('form_btn');
+    if (btn) btn.disabled = true;
+    const message = document.getElementById('form_message');
+    if (message) message.classList.remove('d_none');
+}
+
+// Entscheidet anhand des Feldtyps, welche Prüfung genutzt wird
+function validateInput(input, showErrors = true) {
+    if (input.type === 'checkbox') {
+        return validateCheckbox(input, showErrors);
+    } else if (input.id === 'email') {
+        return validateEmail(input, showErrors);
+    } else {
+        return validateText(input, showErrors);
+    }
+}
+
+function validateCheckbox(input, showErrors) {
+    const parent = input.parentElement;
+    const isValid = input.checked;
+    if (showErrors) {
+        if (!isValid) parent.classList.add('invalid');
+        else parent.classList.remove('invalid');
+    }
+    return isValid;
+}
+
+function validateText(input, showErrors) {
+    const parent = input.parentElement;
+    const isValid = input.value.trim() !== '';
+    if (showErrors) {
+        if (!isValid) parent.classList.add('invalid');
+        else parent.classList.remove('invalid');
+    }
+    return isValid;
+}
+
+function validateEmail(input, showErrors) {
+    const parent = input.parentElement;
+    const value = input.value.trim();
+    const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{3,}\.[a-zA-Z]{2,}$/;
+    const isValid = value !== '' && pattern.test(value);
+    if (!showErrors) return isValid;
+    if (isValid) parent.classList.remove('invalid', 'invalid_format');
+    else if (value === '') parent.classList.add('invalid');
+    else parent.classList.add('invalid_format');
     return isValid;
 }
 
@@ -301,26 +324,22 @@ if (overlay) {
 }
 
 function changeText(index) {
-
-    if (!projectNumber || !projectName || !projectImage || !projectDescription) {
-        return;
-    }
-
+    if (!projectNumber || !projectName || !projectImage || !projectDescription) return;
     currentProjectIndex = index;
     const project = projectsData[index];
-    projectNumber.innerHTML = projectsData[index].number;
-    projectName.innerHTML = projectsData[index].title;
-
-    projectImage.src = projectsData[index].image;
-    projectGithub.href = projectsData[index].github;
-    projectLive.href = projectsData[index].live;
+    projectNumber.innerHTML = project.number;
+    projectName.innerHTML = project.title;
+    projectImage.src = project.image;
+    projectGithub.href = project.github;
+    projectLive.href = project.live;
     projectDescription.innerHTML = currentTranslations[project.descKey] || "No Description";
+    updateProjectLangs(project);
+}
 
-    allLangElements.forEach(element => {
-        element.classList.add('d_none');
-    });
-
-    projectsData[index].langs.forEach(langClass => {
+// Blendet alle Sprach-Tags aus und nur die des Projekts wieder ein
+function updateProjectLangs(project) {
+    allLangElements.forEach(element => element.classList.add('d_none'));
+    project.langs.forEach(langClass => {
         const element = document.querySelector(`.${langClass}`);
         if (element) {
             element.classList.remove('d_none');

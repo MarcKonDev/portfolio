@@ -82,5 +82,6 @@
     "ln_sec10_p": "Diese Website sollte nach dem Deployment über HTTPS ausgeliefert werden. HTTPS schützt die zwischen Ihrem Browser und der Website übertragenen Daten nach dem aktuellen Stand der Technik vor unbefugtem Zugriff.",
     "ln_sec11_h": "11. Aktualisierungen dieser Datenschutzerklärung",
     "ln_sec11_p": "Diese Datenschutzerklärung kann aktualisiert werden, wenn sich die Website, das Hosting-Setup, das Kontaktformular, externe Dienste oder rechtliche Anforderungen ändern.",
-    "ln_date": "Stand: Mai 2026"
+    "ln_date": "Stand: Mai 2026",
+    "thanks_msg": "Vielen Dank! Deine Nachricht wurde gesendet."
 }

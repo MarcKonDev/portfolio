@@ -173,10 +173,10 @@ a {
     z-index: 1;
 }
 
-#lang-toggle-desktop:checked + .slider::before,
-#lang-toggle-mobile:checked + .slider::before {
+#lang-toggle-desktop:checked+.slider::before,
+#lang-toggle-mobile:checked+.slider::before {
     transform: translateX(40px);
-    background-color: var(--secondary-text); 
+    background-color: var(--secondary-text);
 }
 
 .switch_text {
@@ -184,13 +184,13 @@ a {
     transition: 0.4s;
 }
 
-#lang-toggle-desktop:checked + .slider .text-en,
-#lang-toggle-mobile:checked + .slider .text-en {
+#lang-toggle-desktop:checked+.slider .text-en,
+#lang-toggle-mobile:checked+.slider .text-en {
     color: var(--secondary-text-50percent);
 }
 
-#lang-toggle-desktop:not(:checked) + .slider .text-de,
-#lang-toggle-mobile:not(:checked) + .slider .text-de {
+#lang-toggle-desktop:not(:checked)+.slider .text-de,
+#lang-toggle-mobile:not(:checked)+.slider .text-de {
     color: var(--secondary-text-50percent);
 }
 
@@ -264,13 +264,13 @@ main {
 }
 
 h2 {
-    font-size: 40px;
+    font-size: clamp(1.375rem, 1.579vw + 1.079rem, 2.5rem);
     font-weight: 200;
     text-align: center;
 }
 
 h1 {
-    font-size: 128px;
+    font-size: clamp(3rem, 6.93vw + 1.701rem, 7.938rem);
     text-align: center;
 }
 
@@ -719,8 +719,13 @@ h1 {
     justify-items: center;
 }
 
+#svg_grid svg {
+    width: clamp(2.5rem, 1.538vw + 2.115rem, 3.5rem);
+    height: clamp(2.5rem, 1.538vw + 2.115rem, 3.5rem);
+}
+
 .svg_divs {
-    width: 104px;
+    max-width: 104px;
     height: 116px;
     display: flex;
     flex-direction: column;
@@ -988,6 +993,7 @@ h1 {
 }
 
 .testimonial_container {
+    --card-width: 632px;
     display: flex;
     gap: 64px;
     position: relative;
@@ -996,22 +1002,23 @@ h1 {
     align-items: center;
 }
 
-#quote_icon {
+.quote_icon {
     position: absolute;
-    left: calc(50% - 316px - 45px);
-    top: 65px;
+    left: calc(50% - (var(--card-width) / 2) + 10px);
+    top: -20px;
     z-index: 20;
 }
 
 
-.testimonials:nth-child(2) {
+.testimonials:nth-of-type(2) {
     border-color: #3DCFB6;
     background-color: rgba(8, 70, 59, 0.3);
     opacity: 1;
     transform: scale(1);
+    position: relative;
 }
 
-.testimonials:not(:nth-child(2)) {
+.testimonials:not(:nth-of-type(2)) {
     opacity: 0.35;
     transform: scale(0.95);
 }
@@ -1028,7 +1035,7 @@ h1 {
 .testimonials {
     border: 1px solid var(--secondary-text);
     border-radius: 32px;
-    flex: 0 0 632px;
+    flex: 0 0 var(--card-width);
     height: 274px;
     padding: 48px 40px;
     display: flex;
@@ -1299,9 +1306,12 @@ input::placeholder {
 }
 
 #form_btn:disabled {
-    opacity: 0.5;            /* Macht den Button blasser */
-    cursor: not-allowed;     /* Ändert den Mauszeiger in ein "Verboten"-Schild */
-    pointer-events: none;    /* Verhindert Hover-Effekte und Animationen */
+    opacity: 0.5;
+    /* Macht den Button blasser */
+    cursor: not-allowed;
+    /* Ändert den Mauszeiger in ein "Verboten"-Schild */
+    pointer-events: none;
+    /* Verhindert Hover-Effekte und Animationen */
 }
 
 /* #endregion */
@@ -1383,6 +1393,16 @@ input::placeholder {
     visibility: hidden;
 }
 
+.form_message {
+    margin-top: 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--secondary-text);
+    background-color: color-mix(in srgb, var(--secondary-text) 12%, transparent);
+    color: var(--secondary-text);
+    font-size: 18px;
+}
+
 .form_container.invalid .error-empty,
 .form_container.invalid .error-message:not(.error-invalid),
 #privacy_btn.invalid .error-message {
@@ -1428,14 +1448,14 @@ input::placeholder {
 }
 
 #project_text h2 {
-    font-size: 128px;
+    font-size: clamp(3.5rem, 6.923vw + 1.769rem, 8rem);
     font-weight: 700;
     font-family: 'Karla', 'Courier New', monospace;
     color: var(--secondary-text);
 }
 
 #project_text h3 {
-    font-size: 64px;
+    font-size: clamp(2rem, 3.077vw + 1.231rem, 4rem);
     font-weight: 700;
     margin-bottom: 40px;
     line-height: 80%;
@@ -1640,8 +1660,11 @@ html {
     }
 
     .testimonials {
-        flex: 0 0 350px;
         height: 290px;
+    }
+
+    .testimonial_container {
+        --card-width: 350px;
     }
 
     .contact_grid {
@@ -1661,6 +1684,7 @@ html {
 }
 
 @media (max-width: 750px) {
+
     #hero {
         padding-top: 100px;
         justify-content: start;
@@ -1705,9 +1729,6 @@ html {
         font-size: 62px;
     }
 
-    h2 {
-        font-size: 24px;
-    }
 
     #check_work_btn {
         width: 153px;
@@ -1750,7 +1771,7 @@ html {
     #skillset h2,
     #present_projects h2,
     .work_together h2 {
-        font-size: 56px;
+        font-size: 38px;
     }
 
     #about_me_text p {
@@ -1768,13 +1789,17 @@ html {
         font-size: 20px;
     }
 
-    #quote_icon {
+    .testimonial_container {
+        --card-width: 340px;
+    }
+
+    .quote_icon {
         position: absolute;
-        left: calc(80% - 316px - 45px);
-        top: 65px;
+        left: calc(50% - (var(--card-width) / 2) + 5px);
+        top: -26px;
         z-index: 20;
-        width: 67px;
-        height: 48px;
+        width: 50px;
+        height: 50px;
     }
 
     .work_together h4,
@@ -1797,6 +1822,9 @@ html {
         height: 94%;
         justify-content: start;
         align-items: center;
+        max-height: 90vh;
+        height: 100%;
+        overflow: auto;
     }
 
     #project_image {
@@ -1824,15 +1852,6 @@ html {
 
     #project_text {
         padding: 0 20px;
-    }
-
-    #project_text h2 {
-        font-size: 72px;
-    }
-
-    #project_text h3 {
-        font-size: 56px;
-        margin-bottom: 32px;
     }
 
     #project_desc h4 {
@@ -1896,8 +1915,8 @@ html {
         display: flex;
         align-items: center;
     }
-    
-    #mobile_nav button{
+
+    #mobile_nav button {
         background-color: transparent;
         border: none;
         cursor: pointer;
@@ -1905,26 +1924,98 @@ html {
 
     #footer_container {
         display: flex;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        gap: 24px 0px; 
+        gap: 24px 0px;
     }
 
     #footer_img_area {
-        max-width: 50%; 
-        order: 1; 
+        max-width: 50%;
+        order: 1;
     }
 
     #footer_list_wrapper {
-        order: 2; 
-        align-items: flex-end; 
+        order: 2;
+        align-items: flex-end;
     }
 
     #footer_text_area {
-        order: 3; 
-        width: 100%; 
+        order: 3;
+        width: 100%;
         text-align: center;
-        margin-top: 20px;  
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero_btns {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    #mindset_overlay {
+        left: -40px;
+    }
+
+    .error-message {
+        font-size: 15px;
+    }
+
+    .form_container {
+        padding: 30px 0;
+    }
+
+    .testimonials {
+        flex: 0 0 250px;
+        padding: 20px 20px;
+    }
+
+    #about_me_text,
+    #skillset {
+        padding: 32px 8px;
+    }
+
+    #project_text h3 {
+        margin-bottom: 16px;
+    }
+
+    #project_desc h4 {
+        margin-bottom: 10px;
+    }
+
+    #overlay_buttons {
+        /* flex-direction: column; */
+        gap: 10px;
+    }
+
+    #overlay_buttons a {
+        padding: 13px 12px;
+    }
+
+    #project_image img {
+        max-width: 250px;
+    }
+
+    #project_overlay {
+        gap: 5px;
+    }
+
+    #overlay_description {
+        margin-bottom: 16px;
+    }
+
+    #overlay_used_langs {
+        margin-bottom: 24px;
+    }
+
+    .testimonial_container {
+        --card-width: 250px;
+    }
+
+    .testimonials {
+        padding: 20px 20px;
     }
 }

@@ -82,5 +82,6 @@
     "ln_sec10_p": "This website should be delivered via HTTPS after deployment. HTTPS protects data transmitted between your browser and the website against unauthorized access as far as technically possible.",
     "ln_sec11_h": "11. Updates to this privacy policy",
     "ln_sec11_p": "This privacy policy may be updated if the website, hosting setup, contact form, external services or legal requirements change.",
-    "ln_date": "Date: May 2026"
+    "ln_date": "Date: May 2026",
+    "thanks_msg": "Thank you! Your message has been sent."
 }
