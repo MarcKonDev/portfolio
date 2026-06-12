@@ -36,7 +36,6 @@ const allLangElements = document.querySelectorAll('.overlay_langs');
 let currentTranslations = {};
 let currentProjectIndex = 0;
 
-// Testimonial-Slider: gemeinsam genutzte Elemente und Zustand
 const container = document.querySelector(".testimonial_container");
 const nextBtn = document.querySelector(".next_btn");
 const prevBtn = document.querySelector(".prev_btn");
@@ -98,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setupFormValidation();
 });
 
-// Scrollt sanft zum Abschnitt mit dem übergebenen Selektor
 function scrollToSection(selector) {
     document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
 }
@@ -113,7 +111,6 @@ function setupScrollButtons() {
     skillsetBtn.addEventListener('click', () => scrollToSection('#contact_me'));
 }
 
-// Markiert den aktuell aktiven Punkt unter dem Slider
 function updateDots() {
     dots.forEach((dot, i) => {
         if (i === currentDotIndex) {
@@ -124,7 +121,6 @@ function updateDots() {
     });
 }
 
-// Schiebt die erste Karte nach hinten (vorwärts blättern)
 function showNextTestimonial() {
     const firstCard = container.querySelector(".testimonials");
     container.appendChild(firstCard);
@@ -132,7 +128,6 @@ function showNextTestimonial() {
     updateDots();
 }
 
-// Schiebt die letzte Karte nach vorne (rückwärts blättern)
 function showPrevTestimonial() {
     const allCards = container.querySelectorAll(".testimonials");
     const lastCard = allCards[allCards.length - 1];
@@ -150,7 +145,6 @@ function setupTestimonials() {
 
 document.addEventListener("DOMContentLoaded", setupTestimonials);
 
-// Zeigt/versteckt das Vorschaubild zu einer Projektzeile
 function toggleProjectImage(row, show) {
     const projectName = row.getAttribute('data-project');
     const targetImg = document.getElementById(`img-${projectName}`);
@@ -179,7 +173,6 @@ function setupFormValidation() {
     checkFormValidity(inputs, submitBtn);
 }
 
-// Prüft das gesamte Formular und sperrt/entsperrt den Button
 function checkFormValidity(inputs, submitBtn) {
     let isFormValid = true;
     inputs.forEach(input => {
@@ -190,14 +183,12 @@ function checkFormValidity(inputs, submitBtn) {
     submitBtn.disabled = !isFormValid;
 }
 
-// Hängt die drei Listener an ein einzelnes Eingabefeld
 function addInputListeners(input, inputs, submitBtn) {
     input.addEventListener('blur', () => validateInput(input, true));
     input.addEventListener('input', () => handleInputTyping(input, inputs, submitBtn));
     input.addEventListener('change', () => handleCheckboxChange(input, inputs, submitBtn));
 }
 
-// Beim Tippen Fehler live entfernen und Button-Status prüfen
 function handleInputTyping(input, inputs, submitBtn) {
     if (input.id === 'email') {
         input.parentElement.classList.remove('invalid', 'invalid_format');
@@ -207,7 +198,6 @@ function handleInputTyping(input, inputs, submitBtn) {
     checkFormValidity(inputs, submitBtn);
 }
 
-// Wichtig für die Checkbox (reagiert besser auf 'change')
 function handleCheckboxChange(input, inputs, submitBtn) {
     if (input.type === 'checkbox' && input.checked) {
         input.parentElement.classList.remove('invalid');
@@ -215,7 +205,6 @@ function handleCheckboxChange(input, inputs, submitBtn) {
     checkFormValidity(inputs, submitBtn);
 }
 
-// Beim Absenden alles prüfen; wenn gültig, per fetch verschicken
 function handleFormSubmit(event, inputs) {
     event.preventDefault();
     let isFormValid = true;
@@ -227,7 +216,6 @@ function handleFormSubmit(event, inputs) {
     if (isFormValid) sendForm(event.target);
 }
 
-// Schickt die Formulardaten an sendmail.php (ohne Seitenreload)
 async function sendForm(form) {
     try {
         const response = await fetch(form.action, {
@@ -242,16 +230,17 @@ async function sendForm(form) {
     }
 }
 
-// Leert das Formular und zeigt die Erfolgsmeldung
 function showFormSuccess(form) {
     form.reset();
     const btn = document.getElementById('form_btn');
     if (btn) btn.disabled = true;
     const message = document.getElementById('form_message');
-    if (message) message.classList.remove('d_none');
+    if (message) {
+        message.classList.remove('d_none');
+        setTimeout(() => message.classList.add('d_none'), 5000);
+    }
 }
 
-// Entscheidet anhand des Feldtyps, welche Prüfung genutzt wird
 function validateInput(input, showErrors = true) {
     if (input.type === 'checkbox') {
         return validateCheckbox(input, showErrors);
@@ -336,7 +325,6 @@ function changeText(index) {
     updateProjectLangs(project);
 }
 
-// Blendet alle Sprach-Tags aus und nur die des Projekts wieder ein
 function updateProjectLangs(project) {
     allLangElements.forEach(element => element.classList.add('d_none'));
     project.langs.forEach(langClass => {

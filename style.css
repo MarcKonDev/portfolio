@@ -1418,6 +1418,9 @@ input::placeholder {
     visibility: visible;
 }
 
+.form_container input{
+    padding: 2px 0;
+}
 
 
 #privacy_btn .error-message {
@@ -1437,6 +1440,7 @@ input::placeholder {
     background: linear-gradient(to left bottom, var(--secondary-background) 0%, var(--primary-background) 50%);
     border: 1px solid var(--secondary-text);
     border-radius: 20px;
+    color: var(--primary-text);
 }
 
 #project_text {
