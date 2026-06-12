@@ -1431,7 +1431,9 @@ input::placeholder {
 }
 
 #project_overlay {
-    position: absolute;
+    position: static;     /* statt absolute */
+    margin: 0;            /* UA-Default margin: auto überschreiben */
+    padding: 0; 
     max-width: 1248px;
     width: 100%;
     height: 656px;
@@ -1678,7 +1680,7 @@ html {
     }
 
     #project_overlay {
-        gap: 20px;
+        gap: 10px;
     }
 
     #project_image img {
@@ -1822,18 +1824,22 @@ html {
 
     #project_overlay {
         display: flex;
-        flex-direction: column-reverse;
-        height: 94%;
-        justify-content: start;
+        flex-direction: column;
         align-items: center;
-        max-height: 90vh;
         height: 100%;
-        overflow: auto;
+        max-height: 98dvh;
+        /* overflow-y: auto; */
+        padding-bottom: 80px;
+    }
+
+    #project_text h3 {
+        margin-bottom: 20px;
     }
 
     #project_image {
+        order: -1;
         position: static;
-        padding-top: 50px;
+        padding-top: 40px;
         padding-left: 40px;
         padding-right: 40px;
     }
@@ -1949,6 +1955,15 @@ html {
         width: 100%;
         text-align: center;
         margin-top: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .prev_projects{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
     }
 }
 
